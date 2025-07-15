@@ -2,49 +2,49 @@
 export const destinationData = [
   {
     id: 1,
-    image: "/images/d1.jpg",
+    image: "/images/e1.jpg",
     country: "France",
     travelers: "150,000",
   },
   {
     id: 2,
-    image: "/images/d2.jpg",
+    image: "/images/e3.jpg",
     country: "USA",
     travelers: "250,000",
   },
   {
     id: 3,
-    image: "/images/d3.jpg",
+    image: "/images/e4.jpg",
     country: "Italy",
     travelers: "180,000",
   },
   {
     id: 4,
-    image: "/images/d4.jpg",
+    image: "/images/e5.jpg",
     country: "Japan",
     travelers: "200,000",
   },
   {
     id: 5,
-    image: "/images/d5.jpg",
+    image: "/images/e2.jpg",
     country: "Australia",
     travelers: "120,000",
   },
   {
     id: 6,
-    image: "/images/d6.jpg",
+    image: "/images/e6.jpg",
     country: "Canada",
     travelers: "175,000",
   },
   {
     id: 7,
-    image: "/images/d7.jpg",
+    image: "/images/e7.jpg",
     country: "Germany",
     travelers: "160,000",
   },
   {
     id: 8,
-    image: "/images/d8.jpg",
+    image: "/images/e8.jpg",
     country: "Brazil",
     travelers: "140,000",
   },
@@ -53,7 +53,7 @@ export const destinationData = [
 export const hotelsData = [
   {
     id: 1,
-    image: "/images/h1.jpg",
+    image: "/images/a1.jpg",
     name: "The Grand London Resort and Spa",
     location: "Westminster, London",
     rating: 4.6,
@@ -62,7 +62,7 @@ export const hotelsData = [
   },
   {
     id: 2,
-    image: "/images/h2.jpg",
+    image: "/images/a2.jpg",
     name: "Barcelona City Suites Deluxe Hotel",
     location: "Ciutat Vella, Barcelona",
     rating: 4.7,
@@ -71,7 +71,7 @@ export const hotelsData = [
   },
   {
     id: 3,
-    image: "/images/h3.jpg",
+    image: "/images/a3.jpg",
     name: "Times Square Premium Stay Hotel",
     location: "Manhattan, New York",
     rating: 4.9,
@@ -80,7 +80,7 @@ export const hotelsData = [
   },
   {
     id: 4,
-    image: "/images/h4.jpg",
+    image: "/images/a4.jpg",
     name: "Hilton Roma Luxury Hotel Palace",
     location: "Vaticano Prati, Rome",
     rating: 4.5,
@@ -139,58 +139,58 @@ export const toursData = [
 export const reviewData = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Daniel Parker",
     review:
-      "The service exceeded my expectations. The team was professional, and I couldn't be happier with the results. Highly recommended to everyone!",
+      "Booking was incredibly easy and fast. I found the perfect stay within minutes. Definitely using this again!",
     image: "/images/u1.jpg",
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "Lucas Mitchell",
     review:
-      "I am thoroughly impressed with the attention to detail and quality. They truly understand customer needs and deliver outstanding results. Wonderful experience!",
+      "Excellent service and smooth experience. I got quick responses and the whole trip was hassle-free!",
     image: "/images/u2.jpg",
   },
   {
     id: 3,
-    name: "Michael Brown",
+    name: "Nathan Brooks",
     review:
-      "Exceptional quality and fantastic customer service! The project was delivered on time and exactly as I wanted. I will definitely use their services again.",
+      "Great platform! I booked a last-minute trip and everything worked out perfectly. Very reliable.",
     image: "/images/u3.jpg",
   },
   {
     id: 4,
-    name: "Emily Davis",
+    name: "Aaron Wright",
     review:
-      "Outstanding results! The team was efficient, and their professionalism was remarkable. Everything was done perfectly. I highly recommend their expertise to everyone.",
+      "The site was easy to navigate, and I found great deals quickly. Saved me time and money!",
     image: "/images/u1.jpg",
   },
   {
     id: 5,
-    name: "Chris Wilson",
+    name: "Ethan Carter",
     review:
-      "Amazing service! They exceeded all expectations and delivered a product that I am extremely happy with. The communication throughout the project was excellent.",
+      "Super helpful and convenient. Their recommendations really made my vacation better. Highly recommended!",
     image: "/images/u2.jpg",
   },
   {
     id: 6,
-    name: "Sarah Johnson",
+    name: "Julian Hayes",
     review:
-      "Fantastic experience! They listened carefully to my requirements and delivered exactly what I needed. Their attention to detail is truly commendable.",
+      "Everything went smoothly from start to finish. It felt like they really cared about my travel experience.",
     image: "/images/u3.jpg",
   },
   {
     id: 7,
-    name: "David Lee",
+    name: "Owen Bennett",
     review:
-      "Absolutely incredible service! The team was supportive and responsive, making sure everything was perfect. I will definitely recommend them to my friends.",
+      "I travel often, and this was by far one of the easiest booking experiences I’ve had. Great job!",
     image: "/images/u1.jpg",
   },
   {
     id: 8,
-    name: "Sophia White",
+    name: "Leo Morgan",
     review:
-      "Five-star service from start to finish! The dedication and skill of the team made all the difference. Truly an exceptional experience I won’t forget.",
+      "Fantastic service. I loved how everything was organized and simple. Will definitely book again soon.",
     image: "/images/u2.jpg",
   },
 ];
