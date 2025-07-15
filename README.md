@@ -1,2 +1,3 @@
 ## TravEase
-<img width="2632" height="10468" alt="travel-web-green vercel app_" src="https://github.com/user-attachments/assets/290888a3-eb57-449a-ba25-9ec59611c39a" />
+
+<img width="1000" height="10468" alt="travel-web-green vercel app_" src="https://github.com/user-attachments/assets/de3232b6-a83c-41de-b06a-7a9540337e50" />
