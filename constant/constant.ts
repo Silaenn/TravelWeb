@@ -1,32 +1,35 @@
 export const navLinks = [
   {
     id: 1,
-    url: "#",
+    url: "#hero",
     label: "Home",
   },
   {
     id: 2,
-    url: "#",
-    label: "About",
+    url: "#destinations",
+    label: "Destinations",
   },
   {
     id: 3,
-    url: "#",
-    label: "Destination",
+    url: "#hotels",
+    label: "Hotels",
   },
   {
     id: 4,
-    url: "#",
-    label: "Blog",
+    url: "#tours",
+    label: "Tours",
   },
   {
     id: 5,
-    url: "#",
-    label: "Dashboard",
+    url: "#reviews",
+    label: "Reviews",
   },
   {
     id: 6,
-    url: "#",
-    label: "Contact",
+    url: "#news",
+    label: "Journal",
   },
 ];
+
+export const BRAND_NAME = "Voya";
+export const BRAND_TAGLINE = "Discover the world.";

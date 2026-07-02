@@ -1,44 +1,292 @@
-import SearchBox from "@/components/Helper/SearchBox";
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import { TbArrowDown, TbSearch, TbMapPin, TbCalendar, TbUsers } from "react-icons/tb";
+import { BRAND_TAGLINE } from "@/constant/constant";
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    // Fade in after mount
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleScrollDown = () => {
+    const el = document.getElementById("destinations");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="relative w-full h-[120vh] sm:h-[100vh]">
-      {/* overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-70"></div>
-      {/* Video */}
+    <section
+      id="hero"
+      className="relative w-full h-screen min-h-[600px] overflow-hidden"
+      aria-label="Voya Hero — Discover the World"
+    >
+      {/* Background video */}
       <video
+        ref={videoRef}
         src="/images/hero2.mp4"
         autoPlay
         muted
         loop
+        playsInline
         preload="metadata"
-        className="w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ transform: "scale(1.05)" }}
+        aria-hidden="true"
       />
-      {/* Text content */}
-      <div className="absolute z-[100] w-full h-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <div className="flex items-center justify-center flex-col w-full h-full">
-          <div data-aos="fade-up">
-            <h1 className="text-[25px] mb-4 md:mb-0 text-center md:text-[35px] lg:text-[45px] tracking-[0.7rem] text-white font-bold uppercase">
-              Travel Easier with TravEase
-            </h1>
-            <p className="md:text-base text-center text-lg text-white font-normal [word-spacing:2px]">
-              Thousands of destinations. One simple platform.
-            </p>
-          </div>
-          {/* Search Box */}
-          <SearchBox />
-          <Link
-            href="#"
-            className="rounded px-14 md:px-28 -mt-4 py-2.5 overflow-hidden group bg-green-600 relative hover:bg-gradient-to-r hover:from-green-600 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+
+      {/* Multi-layer overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(
+              180deg,
+              oklch(5% 0.02 250 / 0.6) 0%,
+              oklch(5% 0.02 250 / 0.3) 40%,
+              oklch(5% 0.02 250 / 0.55) 75%,
+              oklch(5% 0.02 250 / 0.95) 100%
+            )
+          `,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Vignette left */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 40%, oklch(5% 0.02 250 / 0.5) 100%)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <div className="container-voya relative z-10 h-full flex flex-col justify-center items-center text-center">
+        {/* Eyebrow */}
+        <div
+          className={`flex items-center gap-2 px-4 py-2 rounded-full mb-6 transition-all duration-700 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{
+            background: "oklch(100% 0 0 / 0.08)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid oklch(75% 0.16 85 / 0.3)",
+            transitionDelay: "0.1s",
+          }}
+        >
+          <span
+            className="text-xs font-semibold uppercase tracking-widest"
+            style={{ color: "var(--color-accent)" }}
           >
-            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-            <span className="relative font-bold">Search</span>
-          </Link>
+            ✦ Premium Travel Experience
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1
+          className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 transition-all duration-700 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+          style={{
+            fontFamily: "var(--font-playfair, 'Playfair Display', serif)",
+            color: "var(--color-text-primary)",
+            lineHeight: "1.1",
+            transitionDelay: "0.2s",
+          }}
+        >
+          The World Is Yours
+          <br />
+          <span className="text-gradient">to Discover.</span>
+        </h1>
+
+        {/* Subline */}
+        <p
+          className={`text-base sm:text-lg max-w-xl mx-auto mb-10 transition-all duration-700 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+          style={{
+            color: "oklch(80% 0.01 250)",
+            lineHeight: "1.7",
+            transitionDelay: "0.35s",
+          }}
+        >
+          {BRAND_TAGLINE} Curated destinations, handpicked hotels, and
+          extraordinary tours — all in one place.
+        </p>
+
+        {/* Search Box */}
+        <div
+          className={`w-full max-w-3xl transition-all duration-700 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+          style={{ transitionDelay: "0.5s" }}
+        >
+          <div
+            className="glass rounded-2xl p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+          >
+            {/* Location */}
+            <div
+              className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 cursor-text"
+              style={{ background: "var(--color-bg-elevated)" }}
+            >
+              <TbMapPin
+                className="w-5 h-5 flex-shrink-0"
+                style={{ color: "var(--color-accent)" }}
+              />
+              <div className="min-w-0">
+                <p
+                  className="text-xs font-semibold mb-1 uppercase tracking-wide"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Destination
+                </p>
+                <input
+                  type="text"
+                  placeholder="Where to?"
+                  className="w-full text-sm bg-transparent border-none outline-none"
+                  style={{ color: "var(--color-text-primary)" }}
+                  id="hero-destination-input"
+                  aria-label="Enter your destination"
+                />
+              </div>
+            </div>
+
+            {/* Check-in */}
+            <div
+              className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer"
+              style={{ background: "var(--color-bg-elevated)" }}
+            >
+              <TbCalendar
+                className="w-5 h-5 flex-shrink-0"
+                style={{ color: "var(--color-accent)" }}
+              />
+              <div>
+                <p
+                  className="text-xs font-semibold mb-1 uppercase tracking-wide"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Check In
+                </p>
+                <input
+                  type="date"
+                  className="text-sm bg-transparent border-none outline-none"
+                  style={{ color: "var(--color-text-primary)" }}
+                  id="hero-checkin-input"
+                  aria-label="Check-in date"
+                />
+              </div>
+            </div>
+
+            {/* Check-out */}
+            <div
+              className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer"
+              style={{ background: "var(--color-bg-elevated)" }}
+            >
+              <TbCalendar
+                className="w-5 h-5 flex-shrink-0"
+                style={{ color: "var(--color-accent)" }}
+              />
+              <div>
+                <p
+                  className="text-xs font-semibold mb-1 uppercase tracking-wide"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Check Out
+                </p>
+                <input
+                  type="date"
+                  className="text-sm bg-transparent border-none outline-none"
+                  style={{ color: "var(--color-text-primary)" }}
+                  id="hero-checkout-input"
+                  aria-label="Check-out date"
+                />
+              </div>
+            </div>
+
+            {/* Guests + Search CTA */}
+            <div className="flex gap-2">
+              <div
+                className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl"
+                style={{ background: "var(--color-bg-elevated)" }}
+              >
+                <TbUsers
+                  className="w-5 h-5 flex-shrink-0"
+                  style={{ color: "var(--color-accent)" }}
+                />
+                <div>
+                  <p
+                    className="text-xs font-semibold mb-1 uppercase tracking-wide"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    Guests
+                  </p>
+                  <p className="text-sm" style={{ color: "var(--color-text-primary)" }}>
+                    2 Adults
+                  </p>
+                </div>
+              </div>
+              <button
+                id="hero-search-btn"
+                className="w-12 flex-shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 hover:opacity-90 active:scale-95"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
+                  boxShadow: "0 4px 20px oklch(75% 0.16 85 / 0.4)",
+                }}
+                aria-label="Search destinations"
+              >
+                <TbSearch className="w-5 h-5 text-black" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats strip */}
+        <div
+          className={`flex items-center gap-6 sm:gap-10 mt-10 transition-all duration-700 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{ transitionDelay: "0.65s" }}
+        >
+          {[
+            { num: "500K+", label: "Travelers" },
+            { num: "120+", label: "Destinations" },
+            { num: "98%", label: "Satisfaction" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <p
+                className="text-xl font-bold"
+                style={{ color: "var(--color-accent)", fontFamily: "var(--font-playfair, serif)" }}
+              >
+                {stat.num}
+              </p>
+              <p className="text-xs" style={{ color: "oklch(60% 0.01 250)" }}>
+                {stat.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+
+      {/* Scroll down indicator */}
+      <button
+        onClick={handleScrollDown}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 transition-opacity duration-300 hover:opacity-70"
+        style={{ color: "oklch(70% 0.01 250)" }}
+        aria-label="Scroll to destinations"
+      >
+        <span className="text-xs uppercase tracking-widest">Explore</span>
+        <TbArrowDown
+          className="w-4 h-4 animate-bounce"
+          style={{ color: "var(--color-accent)" }}
+        />
+      </button>
+    </section>
   );
 };
 

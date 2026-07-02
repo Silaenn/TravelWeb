@@ -1,104 +1,183 @@
 import Link from "next/link";
 import React from "react";
-import { FaDribbble, FaFacebook, FaTwitter } from "react-icons/fa";
+import {
+  TbBrandInstagram,
+  TbBrandX,
+  TbBrandFacebook,
+  TbBrandLinkedin,
+  TbCompass,
+  TbMapPin,
+  TbMail,
+  TbPhone,
+} from "react-icons/tb";
+import { BRAND_NAME } from "@/constant/constant";
+
+const FOOTER_LINKS = {
+  Company: ["About Us", "Careers", "Press Kit", "Gift Cards", "Magazine"],
+  Support: ["Help Center", "Legal Notice", "Privacy Policy", "Terms & Conditions", "Sitemap"],
+  Explore: ["Car Hire", "Activity Finder", "Tour Packages", "Flight Deals", "Travel Agents"],
+};
+
+const SOCIALS = [
+  { icon: TbBrandInstagram, label: "Instagram", href: "#" },
+  { icon: TbBrandX, label: "X (Twitter)", href: "#" },
+  { icon: TbBrandFacebook, label: "Facebook", href: "#" },
+  { icon: TbBrandLinkedin, label: "LinkedIn", href: "#" },
+];
 
 const Footer = () => {
   return (
-    <div className="pt-16 pb-16">
-      <div className="w-[80%] mx-auto items-start grid-cols-1 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4 gap-10">
-        {/* 1st part */}
-        <div className="space-y-5">
-          <h1 className="text-lg font-bold">Company</h1>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            About Us
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Careers
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Blogs
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Gift Cards
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Magazine
-          </p>
-        </div>
-        {/* 2nd part */}
-        <div className="space-y-5">
-          <h1 className="text-lg font-bold">Support</h1>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Contact
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Legal Notice
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Privacy Policy
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Terms & Conditions
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Sitemap
-          </p>
-        </div>
-        {/* 3rd part */}
-        <div className="space-y-5">
-          <h1 className="text-lg font-bold">Other Services</h1>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Car hire
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Activity Finder
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Tour List
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Flight Finder
-          </p>
-          <p className="text-gray-800 font-medium cursor-pointer text-sm hover:text-blue-950">
-            Travel Agents
-          </p>
-        </div>
-        {/* 4th part */}
-        <div>
-          <h1 className="text-lg font-bold">Contact Us</h1>
-          <div className="mt-6">
-            <h1 className="text-sm text-gray-600">Our Mobile Number</h1>
-            <h1 className="text-base font-bold text-blue-950 mt-1">
-              +012 345 6788
-            </h1>
+    <footer
+      style={{
+        background: "var(--color-bg-surface)",
+        borderTop: "1px solid var(--color-border)",
+      }}
+      aria-label="Voya footer"
+    >
+      {/* Main footer content */}
+      <div className="container-voya py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Brand column */}
+          <div className="lg:col-span-2">
+            {/* Logo */}
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
+                }}
+              >
+                <TbCompass className="w-5 h-5 text-black" />
+              </div>
+              <span
+                className="text-2xl font-bold"
+                style={{
+                  fontFamily: "var(--font-playfair, 'Playfair Display', serif)",
+                  color: "var(--color-text-primary)",
+                }}
+              >
+                {BRAND_NAME}
+              </span>
+            </div>
+
+            <p
+              className="text-sm leading-relaxed mb-6 max-w-xs"
+              style={{ color: "var(--color-text-secondary)" }}
+            >
+              Your premium travel companion. Discover curated destinations,
+              handpicked hotels, and unforgettable tours — crafted for the
+              modern traveler.
+            </p>
+
+            {/* Contact */}
+            <div className="space-y-2.5">
+              <a
+                href="tel:+0123456788"
+                className="flex items-center gap-2.5 text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
+                style={{ color: "var(--color-text-secondary)" }}
+                aria-label="Call us: +012 345 6788"
+              >
+                <TbPhone className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+                +012 345 6788
+              </a>
+              <a
+                href="mailto:hello@voya.com"
+                className="flex items-center gap-2.5 text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
+                style={{ color: "var(--color-text-secondary)" }}
+                aria-label="Email us: hello@voya.com"
+              >
+                <TbMail className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+                hello@voya.com
+              </a>
+              <p
+                className="flex items-center gap-2.5 text-sm"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                <TbMapPin className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+                London, United Kingdom
+              </p>
+            </div>
+
+            {/* Socials */}
+            <div className="flex items-center gap-3 mt-6">
+              {SOCIALS.map(({ icon: Icon, label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  style={{
+                    background: "var(--color-bg-elevated)",
+                    border: "1px solid var(--color-border)",
+                    color: "var(--color-text-muted)",
+                  }}
+                  aria-label={`Follow Voya on ${label}`}
+                >
+                  <Icon className="w-4 h-4" />
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="mt-6">
-            <h1 className="text-sm text-gray-600">Our Email</h1>
-            <h1 className="text-base font-bold text-blue-950 mt-1">
-              example@gmail.com
-            </h1>
+
+          {/* Link columns */}
+          {Object.entries(FOOTER_LINKS).map(([category, links]) => (
+            <div key={category}>
+              <h3
+                className="text-sm font-semibold mb-5 uppercase tracking-widest"
+                style={{ color: "var(--color-text-primary)" }}
+              >
+                {category}
+              </h3>
+              <ul className="space-y-3" role="list">
+                {links.map((link) => (
+                  <li key={link}>
+                    <Link
+                      href="#"
+                      className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)] hover-underline"
+                      style={{ color: "var(--color-text-secondary)" }}
+                      aria-label={link}
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div
+        className="border-t"
+        style={{ borderColor: "var(--color-border)" }}
+      >
+        <div className="container-voya py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p
+            className="text-xs text-center sm:text-left"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+          </p>
+          <div
+            className="flex items-center gap-4 text-xs"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+              Privacy
+            </Link>
+            <span>·</span>
+            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+              Terms
+            </Link>
+            <span>·</span>
+            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>
-      {/* Bottom section */}
-      <div className="mt-8 w-[80%] mx-auto border-t pt-8 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
-        <p className="text-center md:text-left">
-          Copyright © 2025 deoo. All rights reserved{" "}
-        </p>
-        <div className="flex items-center space-x-4 mt-4 md:mt-0">
-          <span>Social : </span>
-          <Link href="#" className="text-gray-500 hover:text-gray-800">
-            <FaFacebook />
-          </Link>
-          <Link href="#" className="text-gray-500 hover:text-gray-800">
-            <FaTwitter />
-          </Link>
-          <Link href="#" className="text-gray-500 hover:text-gray-800">
-            <FaDribbble />
-          </Link>
-        </div>
-      </div>
-    </div>
+    </footer>
   );
 };
 

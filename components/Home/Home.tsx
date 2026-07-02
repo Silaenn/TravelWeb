@@ -3,36 +3,38 @@ import React, { useEffect } from "react";
 import Hero from "./Hero/Hero";
 import Destination from "./Destination/Destination";
 import Hotel from "./Hotel/Hotel";
+import Tours from "./Tours/Tours";
 import WhyChoose from "./WhyChoose/WhyChoose";
 import Reviews from "./Reviews/Reviews";
 import News from "./News/News";
 import Newsletter from "./Newsletter/Newsletter";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
   useEffect(() => {
     const initAOS = async () => {
-      await import("aos");
+      const AOS = (await import("aos")).default;
       AOS.init({
-        duration: 1000,
-        easing: "ease",
+        duration: 800,
+        easing: "ease-out-cubic",
         once: true,
-        anchorPlacement: "top-bottom",
+        offset: 60,
       });
     };
     initAOS();
   }, []);
+
   return (
-    <div className="overflow-hidden">
+    <main>
       <Hero />
       <Destination />
       <Hotel />
+      <Tours />
       <WhyChoose />
       <Reviews />
       <News />
       <Newsletter />
-    </div>
+    </main>
   );
 };
 
