@@ -29,17 +29,31 @@ const Footer = () => {
     <footer
       style={{
         background: "var(--color-bg)",
-        borderTop: "3px double var(--color-border)",
+        borderTop: "1px solid var(--color-border)",
       }}
       aria-label={`${BRAND_NAME} footer`}
     >
       <div className="container-voya py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="mb-5">
-              <h3 className="masthead text-2xl">{BRAND_NAME}</h3>
-              <p className="masthead-sub">A Journal of Curious Journeys</p>
+            <div className="flex items-center gap-2 mb-4">
+              <div
+                className="w-8 h-8 flex items-center justify-center rounded-md"
+                style={{ background: "var(--color-primary)" }}
+              >
+                <span
+                  className="text-sm font-bold"
+                  style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
+                >
+                  V
+                </span>
+              </div>
+              <h3
+                className="text-xl font-bold"
+                style={{ fontFamily: "var(--font-display)", color: "var(--color-text-primary)" }}
+              >
+                {BRAND_NAME}
+              </h3>
             </div>
 
             <p
@@ -51,7 +65,6 @@ const Footer = () => {
               modern explorer.
             </p>
 
-            {/* Contact */}
             <div className="space-y-2.5">
               <a
                 href="tel:+0123456788"
@@ -69,7 +82,7 @@ const Footer = () => {
                 aria-label="Email us"
               >
                 <TbMail className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
-                dispatch@gazette.com
+                hello@voyatravel.com
               </a>
               <p
                 className="flex items-center gap-2.5 text-sm"
@@ -80,18 +93,17 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Socials */}
             <div className="flex items-center gap-3 mt-6">
               {SOCIALS.map(({ icon: Icon, label, href }) => (
                 <Link
                   key={label}
                   href={href}
-                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:text-[var(--color-accent)]"
                   style={{
                     background: "var(--color-bg-surface)",
                     border: "1px solid var(--color-border)",
                     color: "var(--color-text-muted)",
-                    borderRadius: "var(--radius-sm)",
+                    borderRadius: "var(--radius-md)",
                   }}
                   aria-label={`Follow us on ${label}`}
                 >
@@ -101,12 +113,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
               <h3
                 className="text-xs font-semibold mb-5 uppercase tracking-widest"
-                style={{ color: "var(--color-text-primary)", fontFamily: "var(--font-mono)" }}
+                style={{ color: "var(--color-text-primary)" }}
               >
                 {category}
               </h3>
@@ -115,7 +126,7 @@ const Footer = () => {
                   <li key={link}>
                     <Link
                       href="#"
-                      className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)] hover-underline"
+                      className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
                       style={{ color: "var(--color-text-secondary)" }}
                       aria-label={link}
                     >
@@ -129,20 +140,19 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div
         className="border-t"
         style={{ borderColor: "var(--color-border)" }}
       >
         <div className="container-voya py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
-            className="text-xs font-mono text-center sm:text-left"
+            className="text-xs text-center sm:text-left"
             style={{ color: "var(--color-text-muted)" }}
           >
             &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </p>
           <div
-            className="flex items-center gap-4 text-xs font-mono"
+            className="flex items-center gap-4 text-xs"
             style={{ color: "var(--color-text-muted)" }}
           >
             <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">

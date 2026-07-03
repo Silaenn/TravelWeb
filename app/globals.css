@@ -1,40 +1,34 @@
 @import "tailwindcss";
 
-/* =========================================
-   VOYA — Design System Overhaul
-   Personality: Newsprint Authentic / Vintage Newspaper
-   ========================================= */
-
 @layer base {
   :root {
-    /* === COLORS — Newsprint Authentic === */
-    --color-bg:          #EDE8DD;
-    --color-bg-surface:  #E5DFD2;
-    --color-bg-elevated: #DBD3C3;
-    --color-bg-card:     #F2EEE7;
+    /* === COLORS — Midnight Bazaar === */
+    --color-bg:          #F2EDE6;
+    --color-bg-surface:  #EBE5DB;
+    --color-bg-card:     #F7F3ED;
 
-    --color-accent:      #8B3A2A;
-    --color-accent-dim:  #6D2C1F;
-    --color-accent-glow: #A84C3A;
+    --color-primary:      #0B5E5C;
+    --color-primary-dim:  #084A48;
+    --color-primary-glow: #0E7270;
 
-    --color-stamp-red:   #B71C1C;
+    --color-accent:      #B85432;
+    --color-accent-dim:  #9E472A;
+    --color-accent-glow: #CC6542;
 
-    --color-text-primary:   #2C1810;
-    --color-text-secondary: #5C3D2E;
-    --color-text-muted:     #8A7560;
+    --color-brass:       #C49A5E;
 
-    --color-border:     #C4B69E;
-    --color-border-dim: #D4CABA;
+    --color-text-primary:   #1C1814;
+    --color-text-secondary: #5C5248;
+    --color-text-muted:     #9A9086;
 
-    --color-newsprint:  #756F6D;
-    --color-aged-gold:  #D4A574;
+    --color-border:     #D6CDC2;
+    --color-border-dim: #E3DCD3;
 
     /* === TYPOGRAPHY === */
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body:    'Old Standard TT', Georgia, serif;
-    --font-mono:    'Special Elite', 'Courier New', monospace;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Space Grotesk', sans-serif;
 
-    /* === SPACING SCALE === */
+    /* === SPACING === */
     --space-xs:  0.25rem;
     --space-sm:  0.5rem;
     --space-md:  1rem;
@@ -43,17 +37,16 @@
     --space-2xl: 3rem;
     --space-3xl: 5rem;
 
-    /* === RADII — newspaper discipline (sharp) === */
-    --radius-sm:  2px;
-    --radius-md:  4px;
-    --radius-lg:  6px;
-    --radius-xl:  8px;
+    /* === RADII === */
+    --radius-sm:  6px;
+    --radius-md:  10px;
+    --radius-lg:  14px;
     --radius-full: 9999px;
 
-    /* === SHADOWS — tinted to paper hue === */
-    --shadow-card: 0 2px 8px rgba(44, 24, 16, 0.08);
-    --shadow-elevated: 0 4px 16px rgba(44, 24, 16, 0.1);
-    --shadow-ink: 0 1px 3px rgba(44, 24, 16, 0.15);
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 3px rgba(28, 24, 20, 0.06);
+    --shadow-md: 0 4px 12px rgba(28, 24, 20, 0.08);
+    --shadow-lg: 0 8px 24px rgba(28, 24, 20, 0.1);
 
     /* === TRANSITIONS === */
     --transition-fast:   150ms ease;
@@ -77,57 +70,16 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.7;
+    line-height: 1.6;
     text-wrap: pretty;
     font-weight: 400;
-
-    /* Aged paper texture — CSS pure, no images */
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(44, 24, 16, 0.012) 2px,
-        rgba(44, 24, 16, 0.012) 4px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(44, 24, 16, 0.012) 2px,
-        rgba(44, 24, 16, 0.012) 4px
-      );
-  }
-
-  /* Age spots / coffee stains overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.035;
-    background:
-      radial-gradient(ellipse at 12% 88%, #D4A574 0%, transparent 50%),
-      radial-gradient(ellipse at 78% 15%, #8B3A2A 0%, transparent 40%),
-      radial-gradient(ellipse at 92% 72%, #756F6D 0%, transparent 45%),
-      radial-gradient(ellipse at 45% 40%, #C4B69E 0%, transparent 55%);
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    line-height: 1.15;
+    line-height: 1.2;
     font-weight: 700;
     color: var(--color-text-primary);
-  }
-
-  h5, h6 {
-    font-family: var(--font-body);
-    font-weight: 600;
-    line-height: 1.3;
   }
 
   img, video {
@@ -144,11 +96,10 @@
   }
 
   ::selection {
-    background-color: rgba(139, 58, 42, 0.2);
+    background-color: rgba(11, 94, 92, 0.15);
     color: var(--color-text-primary);
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -157,16 +108,13 @@
   }
   ::-webkit-scrollbar-thumb {
     background: var(--color-border);
-    border-radius: 2px;
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-newsprint);
+    background: var(--color-text-muted);
   }
 }
 
-/* =========================================
-   UTILITIES
-   ========================================= */
 @layer utilities {
   .container-voya {
     width: 90%;
@@ -174,264 +122,127 @@
     margin-inline: auto;
   }
 
-  /* Newspaper double-rule divider */
-  .double-rule {
-    border: none;
-    border-top: 3px double var(--color-border);
-    height: 0;
-    margin: 0;
-  }
-
-  .double-rule-thin {
-    border: none;
-    border-top: 1px double var(--color-border);
-    height: 0;
-    margin: 0;
-  }
-
-  /* Section header rule (thick + thin) */
-  .section-rule {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .section-rule::before,
-  .section-rule::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border);
-  }
-
-  /* Ornamental divider */
-  .ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    color: var(--color-border);
-    font-size: 0.875rem;
-  }
-  .ornament::before,
-  .ornament::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border);
-  }
-
-  /* Masthead nameplate style */
-  .masthead {
+  .section-heading {
     font-family: var(--font-display);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-primary);
-  }
-
-  .masthead-sub {
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-text-muted);
-  }
-
-  /* Sepia filter for images */
-  .sepia-img {
-    filter: sepia(55%) contrast(88%) brightness(108%) saturate(75%);
-  }
-
-  /* Ink stamp style */
-  .ink-stamp {
-    border: 1px solid var(--color-stamp-red);
-    color: var(--color-stamp-red);
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.15rem 0.5rem;
-  }
-
-  /* Drop cap */
-  .drop-cap::first-letter {
-    font-family: var(--font-display);
-    font-size: 3.5em;
+    font-size: 2.25rem;
     font-weight: 700;
-    float: left;
-    line-height: 0.85;
-    margin-right: 0.4rem;
-    margin-top: 0.05rem;
-    color: var(--color-text-primary);
-  }
-
-  /* Newspaper column layout */
-  .newspaper-cols {
-    column-count: 2;
-    column-gap: 2rem;
-    column-rule: 1px solid var(--color-border-dim);
-  }
-  @media (max-width: 640px) {
-    .newspaper-cols {
-      column-count: 1;
-    }
-  }
-
-  /* Vintage paper card */
-  .paper-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-card);
-  }
-
-  .paper-card-elevated {
-    background: var(--color-bg-elevated);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-elevated);
-  }
-
-  /* Ink button (stamped look) */
-  .ink-btn {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-    border: 1px solid var(--color-text-primary);
-    color: var(--color-text-primary);
-    background: transparent;
-    padding: 0.5rem 1.25rem;
-    transition: all var(--transition-fast);
-  }
-  .ink-btn:hover {
-    background: var(--color-text-primary);
-    color: var(--color-bg-card);
-  }
-
-  .ink-btn-accent {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-  .ink-btn-accent:hover {
-    background: var(--color-accent);
-    color: var(--color-bg-card);
-  }
-
-  .ink-btn-stamp {
-    border: 2px solid var(--color-stamp-red);
-    color: var(--color-stamp-red);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.4rem 1rem;
-  }
-  .ink-btn-stamp:hover {
-    background: var(--color-stamp-red);
-    color: var(--color-bg-card);
-  }
-
-  /* Section header style */
-  .section-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--color-accent);
-  }
-
-  .section-headline {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--color-text-primary);
   }
   @media (min-width: 768px) {
-    .section-headline {
-      font-size: 3rem;
+    .section-heading {
+      font-size: 2.75rem;
     }
   }
   @media (min-width: 1024px) {
-    .section-headline {
-      font-size: 3.5rem;
+    .section-heading {
+      font-size: 3.25rem;
     }
   }
 
-  /* Byline style */
-  .byline {
+  .section-label {
     font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-style: italic;
-    color: var(--color-text-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
   }
 
-  /* Animated underline (kept from original, adjusted) */
-  .hover-underline {
-    position: relative;
+  .card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
   }
-  .hover-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .btn-primary:hover {
+    background: var(--color-primary-dim);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
     background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform var(--transition-normal);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
   }
-  .hover-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  /* Ink wash background (subtle) */
-  .ink-wash {
-    background: rgba(44, 24, 16, 0.03);
+  .btn-accent:hover {
+    background: var(--color-accent-dim);
   }
 
-  .ink-wash-accent {
-    background: rgba(139, 58, 42, 0.06);
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1.5px solid var(--color-border);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .rating-stars {
+    display: inline-flex;
+    gap: 1px;
+    color: var(--color-brass);
   }
 }
 
-/* =========================================
-   COMPONENT OVERRIDES
-   ========================================= */
-
-/* AOS override */
-[data-aos] {
-  pointer-events: none;
-}
-[data-aos].aos-animate {
-  pointer-events: auto;
-}
-
-/* react-multi-carousel custom dots */
-.react-multi-carousel-dot button {
-  background: var(--color-border) !important;
-  border: none !important;
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 2px !important;
-  transition: all 0.3s ease !important;
-}
-.react-multi-carousel-dot--active button {
-  background: var(--color-accent) !important;
-  width: 20px !important;
-}
-
-/* Swiper override */
-.swiper-pagination-bullet {
-  background: var(--color-text-muted) !important;
-  opacity: 1 !important;
-}
-.swiper-pagination-bullet-active {
-  background: var(--color-accent) !important;
-}
-
-/* Disable AOS on mobile */
 @media (max-width: 768px) {
   [data-aos] {
     opacity: 1 !important;

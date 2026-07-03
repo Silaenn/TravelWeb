@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
+import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ResponsiveNav from "@/components/Home/Navbar/ResponsiveNav";
 import Footer from "@/components/Home/Footer/Footer";
 import ScrolToTop from "@/components/Helper/ScrolToTop";
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "The Traveller's Gazette — Est. 1924",
+  title: "Voya Travel — Discover the World, Your Way",
   description:
-    "A journal of curious journeys. Curated destinations, handpicked hotels, and extraordinary tours for the discerning traveller.",
-  keywords: ["travel", "destinations", "hotels", "tours", "newspaper", "gazette"],
+    "Curated destinations, handpicked hotels, and extraordinary tours for the modern explorer.",
+  keywords: ["travel", "destinations", "hotels", "tours", "voya", "booking"],
   openGraph: {
-    title: "The Traveller's Gazette",
-    description: "A journal of curious journeys — curated destinations and handpicked hotels.",
+    title: "Voya Travel",
+    description: "Curated destinations, handpicked hotels, and extraordinary tours.",
     type: "website",
   },
 };
@@ -22,15 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
       <body className="antialiased">
         <ResponsiveNav />
         {children}

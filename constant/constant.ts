@@ -6,30 +6,35 @@ export const navLinks = [
   },
   {
     id: 2,
+    url: "#why-choose",
+    label: "Why Us",
+  },
+  {
+    id: 3,
     url: "#destinations",
     label: "Destinations",
   },
   {
-    id: 3,
+    id: 4,
     url: "#hotels",
     label: "Hotels",
   },
   {
-    id: 4,
+    id: 5,
     url: "#tours",
     label: "Tours",
   },
   {
-    id: 5,
+    id: 6,
     url: "#reviews",
-    label: "Letters",
+    label: "Reviews",
   },
   {
-    id: 6,
+    id: 7,
     url: "#news",
     label: "Journal",
   },
 ];
 
-export const BRAND_NAME = "The Traveller's Gazette";
-export const BRAND_TAGLINE = "A Journal of Curious Journeys — Est. 1924";
+export const BRAND_NAME = "Voya Travel";
+export const BRAND_TAGLINE = "Discover the World, Your Way";

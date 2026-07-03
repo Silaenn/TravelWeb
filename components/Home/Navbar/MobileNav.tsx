@@ -23,30 +23,39 @@ const MobileNav = ({ closeNav }: Props) => {
     <div className="fixed inset-0 z-[999] flex" aria-label="Mobile navigation">
       <div
         className="absolute inset-0"
-        style={{ background: "rgba(44, 24, 16, 0.6)" }}
+        style={{ background: "rgba(28, 24, 20, 0.5)" }}
         onClick={closeNav}
         aria-hidden="true"
       />
 
       <div
-        className="relative ml-auto w-[80%] max-w-[320px] h-full flex flex-col p-8"
-        style={{
-          background: "var(--color-bg)",
-          borderLeft: "3px double var(--color-border)",
-        }}
+        className="relative ml-auto w-[80%] max-w-[320px] h-full flex flex-col p-6"
+        style={{ background: "var(--color-bg)" }}
       >
-        <div className="flex items-center justify-between mb-10">
-          <div>
-            <h2 className="masthead text-xl">{BRAND_NAME}</h2>
-            <p className="masthead-sub">Est. 1924</p>
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-8 h-8 flex items-center justify-center rounded-md"
+              style={{ background: "var(--color-primary)" }}
+            >
+              <span
+                className="text-sm font-bold"
+                style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
+              >
+                V
+              </span>
+            </div>
+            <span
+              className="text-base font-bold"
+              style={{ fontFamily: "var(--font-display)", color: "var(--color-text-primary)" }}
+            >
+              {BRAND_NAME}
+            </span>
           </div>
           <button
             onClick={closeNav}
-            className="p-2 rounded transition-colors duration-200"
-            style={{
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-surface)",
-            }}
+            className="p-2 rounded-md transition-colors duration-200"
+            style={{ color: "var(--color-text-secondary)", background: "var(--color-bg-surface)" }}
             aria-label="Close menu"
           >
             <HiXMark className="w-5 h-5" />
@@ -59,11 +68,9 @@ const MobileNav = ({ closeNav }: Props) => {
               key={link.id}
               href={link.url}
               onClick={(e) => handleNavClick(link.url, e)}
-              className="px-3 py-2.5 text-sm font-medium transition-all duration-200"
+              className="px-3 py-2.5 text-sm font-medium rounded-md transition-all duration-200"
               style={{
                 color: "var(--color-text-secondary)",
-                borderBottom: "1px solid var(--color-border-dim)",
-                fontFamily: "var(--font-body)",
               }}
             >
               {link.label}
@@ -71,9 +78,13 @@ const MobileNav = ({ closeNav }: Props) => {
           ))}
         </nav>
 
+        <button className="btn-primary mt-6 w-full" aria-label="Book now">
+          Book Now
+        </button>
+
         <p
           className="mt-auto pt-8 text-xs"
-          style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}
+          style={{ color: "var(--color-text-muted)" }}
         >
           &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
         </p>

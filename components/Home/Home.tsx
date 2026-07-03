@@ -27,10 +27,10 @@ const Home = () => {
   return (
     <main>
       <Hero />
+      <WhyChoose />
       <Destination />
       <Hotel />
       <Tours />
-      <WhyChoose />
       <Reviews />
       <News />
       <Newsletter />

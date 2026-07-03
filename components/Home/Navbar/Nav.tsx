@@ -20,7 +20,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
       const sections = navLinks.map((l) => l.url.replace("#", ""));
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 100) {
+        if (el && window.scrollY >= el.offsetTop - 120) {
           setActiveSection(section);
           break;
         }
@@ -44,94 +44,95 @@ const Nav = ({ openNav, isOpen }: Props) => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${
-        scrolled ? "shadow-elevated" : ""
+        scrolled ? "shadow-md" : ""
       }`}
       style={{
-        background: "var(--color-bg)",
-        borderBottom: "3px double var(--color-border)",
+        background: scrolled
+          ? "rgba(242, 237, 230, 0.97)"
+          : "rgba(242, 237, 230, 0)",
+        backdropFilter: scrolled ? "blur(8px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
+        borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
       }}
     >
-      <div className="container-voya flex flex-col items-center py-3">
-        {/* Masthead row */}
-        <div className="w-full flex items-center justify-between">
-          {/* Left: Date */}
+      <div
+        className="container-voya flex items-center justify-between"
+        style={{ height: "64px" }}
+      >
+        {/* Logo */}
+        <Link
+          href="#hero"
+          onClick={(e) => handleNavClick("#hero", e)}
+          className="flex items-center gap-2"
+          id="nav-logo"
+          aria-label={`${BRAND_NAME} — Home`}
+        >
           <div
-            className="hidden lg:block text-xs uppercase tracking-wider w-48 text-left"
-            style={{ fontFamily: "var(--font-mono)", color: "var(--color-text-muted)" }}
+            className="w-8 h-8 flex items-center justify-center rounded-md"
+            style={{ background: "var(--color-primary)" }}
           >
-            {new Date().toLocaleDateString("en-GB", {
-              weekday: "short",
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })}
-          </div>
-
-          {/* Center: Brand nameplate */}
-          <Link
-            href="#hero"
-            onClick={(e) => handleNavClick("#hero", e)}
-            className="text-center group"
-            id="nav-logo"
-            aria-label={`${BRAND_NAME} — Home`}
-          >
-            <h1 className="masthead text-2xl md:text-3xl lg:text-4xl tracking-wide leading-none">
-              {BRAND_NAME}
-            </h1>
-          </Link>
-
-          {/* Right: Mobile Toggle */}
-          <div className="w-48 flex justify-end">
-            <button
-              onClick={openNav}
-              className="lg:hidden p-2 rounded transition-colors duration-200"
-              style={{ color: "var(--color-text-primary)" }}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
+            <span
+              className="text-sm font-bold"
+              style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
             >
-              {isOpen ? (
-                <HiXMark className="w-5 h-5" />
-              ) : (
-                <HiBars3BottomRight className="w-5 h-5" />
-              )}
-            </button>
+              V
+            </span>
           </div>
-        </div>
+          <span
+            className="text-lg font-bold hidden sm:inline"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {BRAND_NAME}
+          </span>
+        </Link>
 
-        {/* Tagline */}
-        <p
-          className="mt-0.5 text-xs text-center"
-          style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-body)" }}
+        {/* Nav links — desktop */}
+        <nav
+          className="hidden lg:flex items-center gap-1"
+          aria-label="Primary navigation"
         >
-          Est. 1924 — A Journal of Curious Journeys
-        </p>
+          {navLinks.map((link) => {
+            const sectionId = link.url.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <Link
+                key={link.id}
+                href={link.url}
+                onClick={(e) => handleNavClick(link.url, e)}
+                className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200"
+                style={{
+                  color: isActive ? "var(--color-primary)" : "var(--color-text-secondary)",
+                  background: isActive ? "rgba(11, 94, 92, 0.08)" : "transparent",
+                }}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
 
-        {/* Bottom rule + nav links */}
-        <div
-          className="w-full mt-2 pt-2 hidden lg:flex items-center justify-center gap-6"
-          style={{ borderTop: "1px solid var(--color-border-dim)" }}
-        >
-          <nav className="flex items-center gap-6" aria-label="Primary navigation">
-            {navLinks.map((link) => {
-              const sectionId = link.url.replace("#", "");
-              const isActive = activeSection === sectionId;
-              return (
-                <Link
-                  key={link.id}
-                  href={link.url}
-                  onClick={(e) => handleNavClick(link.url, e)}
-                  className="text-xs font-medium uppercase tracking-widest transition-colors duration-200"
-                  style={{
-                    color: isActive ? "var(--color-accent)" : "var(--color-text-secondary)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+        {/* Right: CTA + Mobile button */}
+        <div className="flex items-center gap-3">
+          <button className="btn-primary text-xs hidden sm:flex" aria-label="Book now">
+            Book Now
+          </button>
+          <button
+            onClick={openNav}
+            className="lg:hidden p-2 rounded-md transition-colors duration-200"
+            style={{ color: "var(--color-text-primary)" }}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? (
+              <HiXMark className="w-5 h-5" />
+            ) : (
+              <HiBars3BottomRight className="w-5 h-5" />
+            )}
+          </button>
         </div>
       </div>
     </header>
