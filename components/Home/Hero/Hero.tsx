@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   TbArrowDown,
   TbSearch,
@@ -7,6 +7,44 @@ import {
   TbCalendar,
 } from "react-icons/tb";
 import { BRAND_TAGLINE } from "@/constant/constant";
+
+function formatDate(value: string) {
+  if (!value) return "";
+  const d = new Date(value + "T00:00:00");
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
+
+function DateField({ label }: { label: string }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [date, setDate] = useState("");
+
+  return (
+    <div
+      className="flex flex-col gap-1 px-3 py-2 rounded-lg cursor-pointer"
+      style={{ background: "rgba(255, 255, 255, 0.9)" }}
+      onClick={() => inputRef.current?.showPicker()}
+    >
+      <span className="text-[10px] font-semibold uppercase tracking-wider text-center" style={{ color: "var(--color-text-muted)" }}>
+        {label}
+      </span>
+      <div className="flex items-center justify-center gap-2 relative">
+        <TbCalendar className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+        <span className="text-sm" style={{ color: date ? "var(--color-text-primary)" : "var(--color-text-muted)" }}>
+          {date ? formatDate(date) : "Select date"}
+        </span>
+        <input
+          ref={inputRef}
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          style={{ fontSize: "16px" }}
+          aria-label={label}
+        />
+      </div>
+    </div>
+  );
+}
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +65,6 @@ const Hero = () => {
       className="relative w-full h-dvh overflow-hidden flex items-center justify-center"
       aria-label="Voya Travel — Hero"
     >
-      {/* Video background */}
       <video
         autoPlay
         muted
@@ -40,7 +77,6 @@ const Hero = () => {
         <source src="/videos/hero-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -50,7 +86,6 @@ const Hero = () => {
         aria-hidden="true"
       />
 
-      {/* Subtle radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -60,14 +95,12 @@ const Hero = () => {
         aria-hidden="true"
       />
 
-      {/* Content */}
       <div
         className={`container-voya relative z-10 w-full transition-all duration-1000 ${
           loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
         <div className="max-w-3xl mx-auto text-center">
-          {/* Label */}
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6"
             style={{
@@ -87,7 +120,6 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Headline */}
           <h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-4"
             style={{ color: "white" }}
@@ -105,7 +137,6 @@ const Hero = () => {
             experiences &mdash; crafted for the modern explorer.
           </p>
 
-          {/* Search bar */}
           <div
             className="max-w-2xl mx-auto p-4 rounded-xl"
             style={{
@@ -117,53 +148,26 @@ const Hero = () => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <div
-                className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
+                className="flex flex-col gap-1 px-3 py-2 rounded-lg"
                 style={{ background: "rgba(255, 255, 255, 0.9)" }}
               >
-                <TbMapPin
-                  className="w-4 h-4 flex-shrink-0"
-                  style={{ color: "var(--color-accent)" }}
-                />
-                <input
-                  type="text"
-                  placeholder="Destination"
-                  className="w-full text-sm bg-transparent border-none outline-none"
-                  style={{ color: "var(--color-text-primary)" }}
-                  aria-label="Enter destination"
-                />
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-center" style={{ color: "var(--color-text-muted)" }}>
+                  Destination
+                </span>
+                <div className="flex items-center justify-center gap-2">
+                  <TbMapPin className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+                  <input
+                    type="text"
+                    placeholder="Where to?"
+                    className="w-full text-sm bg-transparent border-none outline-none"
+                    style={{ color: "var(--color-text-primary)" }}
+                    aria-label="Enter destination"
+                  />
+                </div>
               </div>
 
-              <div
-                className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
-                style={{ background: "rgba(255, 255, 255, 0.9)" }}
-              >
-                <TbCalendar
-                  className="w-4 h-4 flex-shrink-0"
-                  style={{ color: "var(--color-accent)" }}
-                />
-                <input
-                  type="date"
-                  className="w-full text-sm bg-transparent border-none outline-none"
-                  style={{ color: "var(--color-text-primary)" }}
-                  aria-label="Check-in date"
-                />
-              </div>
-
-              <div
-                className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg"
-                style={{ background: "rgba(255, 255, 255, 0.9)" }}
-              >
-                <TbCalendar
-                  className="w-4 h-4 flex-shrink-0"
-                  style={{ color: "var(--color-accent)" }}
-                />
-                <input
-                  type="date"
-                  className="w-full text-sm bg-transparent border-none outline-none"
-                  style={{ color: "var(--color-text-primary)" }}
-                  aria-label="Check-out date"
-                />
-              </div>
+              <DateField label="Check In" />
+              <DateField label="Check Out" />
 
               <button
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
@@ -179,7 +183,6 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Trust stats */}
           <div className="flex items-center justify-center gap-6 md:gap-10 mt-8">
             {[
               { num: "500K+", label: "Travellers" },
@@ -205,7 +208,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <button
         onClick={handleScrollDown}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 transition-opacity duration-300 hover:opacity-60 animate-bounce"

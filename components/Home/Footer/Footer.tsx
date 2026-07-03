@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {
@@ -37,17 +38,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div
-                className="w-8 h-8 flex items-center justify-center rounded-md"
-                style={{ background: "var(--color-primary)" }}
-              >
-                <span
-                  className="text-sm font-bold"
-                  style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
-                >
-                  V
-                </span>
-              </div>
+              <Image src="/images/logo.png" alt={BRAND_NAME} width={32} height={32} className="w-8 h-8 object-contain" />
               <h3
                 className="text-xl font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-text-primary)" }}

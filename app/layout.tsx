@@ -18,6 +18,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   title: "Voya Travel — Discover the World, Your Way",
   description:
     "Curated destinations, handpicked hotels, and extraordinary tours for the modern explorer.",

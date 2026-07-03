@@ -1,5 +1,6 @@
 "use client";
 import { navLinks, BRAND_NAME } from "@/constant/constant";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
@@ -43,16 +44,17 @@ const Nav = ({ openNav, isOpen }: Props) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${
-        scrolled ? "shadow-md" : ""
-      }`}
+      className="fixed top-0 left-0 w-full z-[1000] transition-colors duration-500"
       style={{
         background: scrolled
           ? "rgba(242, 237, 230, 0.97)"
           : "rgba(242, 237, 230, 0)",
-        backdropFilter: scrolled ? "blur(8px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        borderBottom: scrolled
+          ? "1px solid var(--color-border)"
+          : "1px solid rgba(255, 255, 255, 0.15)",
+        boxShadow: scrolled ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
       }}
     >
       <div
@@ -67,22 +69,18 @@ const Nav = ({ openNav, isOpen }: Props) => {
           id="nav-logo"
           aria-label={`${BRAND_NAME} — Home`}
         >
-          <div
-            className="w-8 h-8 flex items-center justify-center rounded-md"
-            style={{ background: "var(--color-primary)" }}
-          >
-            <span
-              className="text-sm font-bold"
-              style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
-            >
-              V
-            </span>
-          </div>
+          <Image
+            src="/images/logo.png"
+            alt={BRAND_NAME}
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain"
+          />
           <span
             className="text-lg font-bold hidden sm:inline"
             style={{
               fontFamily: "var(--font-display)",
-              color: "var(--color-text-primary)",
+              color: scrolled ? "var(--color-text-primary)" : "white",
             }}
           >
             {BRAND_NAME}
@@ -104,8 +102,18 @@ const Nav = ({ openNav, isOpen }: Props) => {
                 onClick={(e) => handleNavClick(link.url, e)}
                 className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200"
                 style={{
-                  color: isActive ? "var(--color-primary)" : "var(--color-text-secondary)",
-                  background: isActive ? "rgba(11, 94, 92, 0.08)" : "transparent",
+                  color: isActive
+                    ? scrolled
+                      ? "var(--color-primary)"
+                      : "white"
+                    : scrolled
+                      ? "var(--color-text-secondary)"
+                      : "rgba(255, 255, 255, 0.85)",
+                  background: isActive
+                    ? scrolled
+                      ? "rgba(11, 94, 92, 0.08)"
+                      : "rgba(255, 255, 255, 0.15)"
+                    : "transparent",
                 }}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -117,13 +125,23 @@ const Nav = ({ openNav, isOpen }: Props) => {
 
         {/* Right: CTA + Mobile button */}
         <div className="flex items-center gap-3">
-          <button className="btn-primary text-xs hidden sm:flex" aria-label="Book now">
+          <button
+            className={`text-xs font-semibold px-4 py-1.5 rounded-md transition-all duration-200 ${
+              scrolled ? "" : ""
+            }`}
+            style={{
+              background: scrolled ? "var(--color-primary)" : "rgba(255, 255, 255, 0.2)",
+              color: "white",
+              border: scrolled ? "none" : "1px solid rgba(255, 255, 255, 0.3)",
+            }}
+            aria-label="Book now"
+          >
             Book Now
           </button>
           <button
             onClick={openNav}
             className="lg:hidden p-2 rounded-md transition-colors duration-200"
-            style={{ color: "var(--color-text-primary)" }}
+            style={{ color: scrolled ? "var(--color-text-primary)" : "white" }}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
           >
