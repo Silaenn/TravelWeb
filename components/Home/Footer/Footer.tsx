@@ -5,7 +5,6 @@ import {
   TbBrandX,
   TbBrandFacebook,
   TbBrandLinkedin,
-  TbCompass,
   TbMapPin,
   TbMail,
   TbPhone,
@@ -29,36 +28,18 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: "var(--color-bg-surface)",
-        borderTop: "1px solid var(--color-border)",
+        background: "var(--color-bg)",
+        borderTop: "3px double var(--color-border)",
       }}
-      aria-label="Voya footer"
+      aria-label={`${BRAND_NAME} footer`}
     >
-      {/* Main footer content */}
       <div className="container-voya py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            {/* Logo */}
-            <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-                }}
-              >
-                <TbCompass className="w-5 h-5 text-black" />
-              </div>
-              <span
-                className="text-2xl font-bold"
-                style={{
-                  fontFamily: "var(--font-playfair, 'Playfair Display', serif)",
-                  color: "var(--color-text-primary)",
-                }}
-              >
-                {BRAND_NAME}
-              </span>
+            <div className="mb-5">
+              <h3 className="masthead text-2xl">{BRAND_NAME}</h3>
+              <p className="masthead-sub">A Journal of Curious Journeys</p>
             </div>
 
             <p
@@ -66,8 +47,8 @@ const Footer = () => {
               style={{ color: "var(--color-text-secondary)" }}
             >
               Your premium travel companion. Discover curated destinations,
-              handpicked hotels, and unforgettable tours — crafted for the
-              modern traveler.
+              handpicked hotels, and unforgettable tours &mdash; crafted for the
+              modern explorer.
             </p>
 
             {/* Contact */}
@@ -85,10 +66,10 @@ const Footer = () => {
                 href="mailto:hello@voya.com"
                 className="flex items-center gap-2.5 text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
                 style={{ color: "var(--color-text-secondary)" }}
-                aria-label="Email us: hello@voya.com"
+                aria-label="Email us"
               >
                 <TbMail className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
-                hello@voya.com
+                dispatch@gazette.com
               </a>
               <p
                 className="flex items-center gap-2.5 text-sm"
@@ -105,13 +86,14 @@ const Footer = () => {
                 <Link
                   key={label}
                   href={href}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
                   style={{
-                    background: "var(--color-bg-elevated)",
+                    background: "var(--color-bg-surface)",
                     border: "1px solid var(--color-border)",
                     color: "var(--color-text-muted)",
+                    borderRadius: "var(--radius-sm)",
                   }}
-                  aria-label={`Follow Voya on ${label}`}
+                  aria-label={`Follow us on ${label}`}
                 >
                   <Icon className="w-4 h-4" />
                 </Link>
@@ -123,8 +105,8 @@ const Footer = () => {
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
               <h3
-                className="text-sm font-semibold mb-5 uppercase tracking-widest"
-                style={{ color: "var(--color-text-primary)" }}
+                className="text-xs font-semibold mb-5 uppercase tracking-widest"
+                style={{ color: "var(--color-text-primary)", fontFamily: "var(--font-mono)" }}
               >
                 {category}
               </h3>
@@ -154,23 +136,23 @@ const Footer = () => {
       >
         <div className="container-voya py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
-            className="text-xs text-center sm:text-left"
+            className="text-xs font-mono text-center sm:text-left"
             style={{ color: "var(--color-text-muted)" }}
           >
-            © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+            &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </p>
           <div
-            className="flex items-center gap-4 text-xs"
+            className="flex items-center gap-4 text-xs font-mono"
             style={{ color: "var(--color-text-muted)" }}
           >
             <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
               Privacy
             </Link>
-            <span>·</span>
+            <span>&middot;</span>
             <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
               Terms
             </Link>
-            <span>·</span>
+            <span>&middot;</span>
             <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
               Cookies
             </Link>

@@ -3,7 +3,6 @@ import { navLinks, BRAND_NAME } from "@/constant/constant";
 import Link from "next/link";
 import React from "react";
 import { HiXMark } from "react-icons/hi2";
-import { TbCompass } from "react-icons/tb";
 
 type Props = {
   closeNav: () => void;
@@ -22,44 +21,28 @@ const MobileNav = ({ closeNav }: Props) => {
 
   return (
     <div className="fixed inset-0 z-[999] flex" aria-label="Mobile navigation">
-      {/* Backdrop */}
       <div
         className="absolute inset-0"
-        style={{ background: "oklch(0% 0 0 / 0.7)", backdropFilter: "blur(4px)" }}
+        style={{ background: "rgba(44, 24, 16, 0.6)" }}
         onClick={closeNav}
         aria-hidden="true"
       />
 
-      {/* Panel */}
       <div
         className="relative ml-auto w-[80%] max-w-[320px] h-full flex flex-col p-8"
         style={{
-          background: "var(--color-bg-elevated)",
-          borderLeft: "1px solid var(--color-border)",
+          background: "var(--color-bg)",
+          borderLeft: "3px double var(--color-border)",
         }}
       >
-        {/* Header */}
         <div className="flex items-center justify-between mb-10">
-          <div className="flex items-center gap-2">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-              }}
-            >
-              <TbCompass className="w-4 h-4 text-black" />
-            </div>
-            <span
-              className="text-xl font-bold"
-              style={{ fontFamily: "var(--font-playfair, serif)", color: "var(--color-text-primary)" }}
-            >
-              {BRAND_NAME}
-            </span>
+          <div>
+            <h2 className="masthead text-xl">{BRAND_NAME}</h2>
+            <p className="masthead-sub">Est. 1924</p>
           </div>
           <button
             onClick={closeNav}
-            className="p-2 rounded-lg transition-colors duration-200"
+            className="p-2 rounded transition-colors duration-200"
             style={{
               color: "var(--color-text-secondary)",
               background: "var(--color-bg-surface)",
@@ -70,24 +53,17 @@ const MobileNav = ({ closeNav }: Props) => {
           </button>
         </div>
 
-        {/* Nav Links */}
-        <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
+        <nav className="flex flex-col gap-1" aria-label="Mobile navigation links">
           {navLinks.map((link) => (
             <Link
               key={link.id}
               href={link.url}
               onClick={(e) => handleNavClick(link.url, e)}
-              className="px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
+              className="px-3 py-2.5 text-sm font-medium transition-all duration-200"
               style={{
                 color: "var(--color-text-secondary)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                (e.currentTarget as HTMLElement).style.background = "var(--color-bg-surface)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--color-text-secondary)";
-                (e.currentTarget as HTMLElement).style.background = "transparent";
+                borderBottom: "1px solid var(--color-border-dim)",
+                fontFamily: "var(--font-body)",
               }}
             >
               {link.label}
@@ -95,33 +71,21 @@ const MobileNav = ({ closeNav }: Props) => {
           ))}
         </nav>
 
-        {/* Divider */}
-        <div
-          className="my-8"
-          style={{ borderTop: "1px solid var(--color-border)" }}
-        />
+        <div className="my-8" style={{ borderTop: "1px solid var(--color-border)" }} />
 
-        {/* CTA */}
         <button
           id="mobile-nav-book-cta"
-          className="w-full py-3 rounded-lg font-semibold text-sm transition-all duration-200 active:scale-95"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-            color: "oklch(10% 0.02 250)",
-            boxShadow: "0 4px 20px oklch(75% 0.16 85 / 0.3)",
-          }}
-          aria-label="Book Now"
+          className="w-full ink-btn ink-btn-accent text-center"
+          aria-label="Subscribe"
         >
-          Book Now
+          Subscribe
         </button>
 
-        {/* Footer note */}
         <p
           className="mt-auto pt-8 text-xs"
-          style={{ color: "var(--color-text-muted)" }}
+          style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}
         >
-          © 2025 Voya. All rights reserved.
+          &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
         </p>
       </div>
     </div>

@@ -2,7 +2,7 @@
 import { hotelsData } from "@/data/data";
 import Image from "next/image";
 import React, { useState } from "react";
-import { TbStar, TbHeart, TbMapPin, TbStarFilled } from "react-icons/tb";
+import { TbMapPin, TbHeart, TbStarFilled } from "react-icons/tb";
 
 const HotelSection = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
@@ -17,18 +17,9 @@ const HotelSection = () => {
     <section
       id="hotels"
       className="py-24 relative"
-      style={{ background: "var(--color-bg-surface)" }}
+      style={{ background: "var(--color-bg)" }}
       aria-labelledby="hotels-heading"
     >
-      {/* Decorative background accent */}
-      <div
-        className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--color-accent), transparent)",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="container-voya">
         {/* Section Header */}
         <div
@@ -36,191 +27,137 @@ const HotelSection = () => {
           data-aos="fade-up"
         >
           <div>
-            <div className="section-divider mb-4" />
-            <p
-              className="text-sm font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "var(--color-accent)" }}
-            >
-              Handpicked Hotels
-            </p>
+            <p className="section-kicker mb-2">Hotel Registry</p>
+            <div className="double-rule-thin mb-4" />
             <h2
               id="hotels-heading"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold"
-              style={{
-                fontFamily: "var(--font-playfair, serif)",
-                color: "var(--color-text-primary)",
-              }}
+              className="section-headline"
             >
               Stay in the
               <br />
-              <span className="text-gradient">Finest Places</span>
+              <span style={{ color: "var(--color-accent)" }}>Finest Places</span>
             </h2>
+            <p className="byline mt-2">Handpicked lodgings for the discerning traveller</p>
           </div>
           <button
             id="hotels-view-all-btn"
-            className="hidden md:flex self-end px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-80"
-            style={{
-              border: "1px solid var(--color-border)",
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-elevated)",
-            }}
+            className="hidden md:flex ink-btn text-xs self-end"
             aria-label="View all hotels"
           >
-            View All Hotels →
+            View All Hotels &rarr;
           </button>
         </div>
 
         {/* Hotel Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {hotelsData.map((hotel, i) => (
             <article
               key={hotel.id}
-              className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "var(--color-bg-elevated)",
-                border: "1px solid var(--color-border)",
-                boxShadow: "var(--shadow-card)",
-              }}
+              className="group paper-card transition-all duration-300 hover:-translate-y-0.5"
+              style={{ borderRadius: "var(--radius-sm)" }}
               data-aos="fade-up"
               data-aos-delay={`${i * 80}`}
               aria-label={`${hotel.name} — ${hotel.location}`}
             >
-              {/* Image container */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-56 overflow-hidden" style={{ borderRadius: "var(--radius-sm) var(--radius-sm) 0 0" }}>
                 <Image
                   src={hotel.image}
                   alt={hotel.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 sepia-img"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                {/* Subtle overlay */}
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, oklch(5% 0.02 250 / 0.7) 0%, transparent 60%)",
+                      "linear-gradient(to top, rgba(44, 24, 16, 0.6) 0%, transparent 60%)",
                   }}
                   aria-hidden="true"
                 />
 
-                {/* Wishlist button */}
                 <button
                   onClick={() => toggleFavorite(hotel.id)}
-                  className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+                  className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
                   style={{
-                    background: "oklch(0% 0 0 / 0.4)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid oklch(100% 0 0 / 0.1)",
+                    background: "var(--color-bg-card)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "var(--radius-sm)",
                   }}
                   aria-label={
                     favorites.includes(hotel.id)
-                      ? `Remove ${hotel.name} from wishlist`
-                      : `Add ${hotel.name} to wishlist`
+                      ? `Remove ${hotel.name} from saved`
+                      : `Save ${hotel.name}`
                   }
                   aria-pressed={favorites.includes(hotel.id)}
                   id={`hotel-wishlist-${hotel.id}`}
                 >
                   <TbHeart
-                    className="w-4 h-4 transition-colors duration-200"
+                    className="w-3.5 h-3.5 transition-colors duration-200"
                     style={{
                       color: favorites.includes(hotel.id)
-                        ? "var(--color-accent)"
-                        : "white",
+                        ? "var(--color-stamp-red)"
+                        : "var(--color-text-muted)",
                       fill: favorites.includes(hotel.id)
-                        ? "var(--color-accent)"
+                        ? "var(--color-stamp-red)"
                         : "none",
                     }}
                   />
                 </button>
 
-                {/* Rating badge */}
                 <div
-                  className="absolute bottom-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full"
+                  className="absolute bottom-3 left-3 flex items-center gap-1 px-2 py-0.5"
                   style={{
-                    background: "oklch(0% 0 0 / 0.5)",
-                    backdropFilter: "blur(8px)",
+                    background: "var(--color-bg-card)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "var(--radius-sm)",
                   }}
                 >
-                  <TbStarFilled
-                    className="w-3 h-3"
-                    style={{ color: "var(--color-accent)" }}
-                  />
-                  <span
-                    className="text-xs font-bold text-white"
-                  >
+                  <TbStarFilled className="w-3 h-3" style={{ color: "var(--color-aged-gold)" }} />
+                  <span className="text-xs font-semibold" style={{ color: "var(--color-text-primary)" }}>
                     {hotel.rating}
                   </span>
-                  <span
-                    className="text-xs"
-                    style={{ color: "oklch(70% 0.01 250)" }}
-                  >
+                  <span className="text-[10px] font-mono" style={{ color: "var(--color-text-muted)" }}>
                     ({hotel.reviews})
                   </span>
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-4">
                 <h3
                   className="text-base font-semibold mb-2 leading-tight line-clamp-2 transition-colors duration-200 group-hover:text-[var(--color-accent)]"
-                  style={{
-                    fontFamily: "var(--font-playfair, serif)",
-                    color: "var(--color-text-primary)",
-                  }}
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-text-primary)" }}
                 >
                   {hotel.name}
                 </h3>
 
                 <div className="flex items-center gap-1.5 mb-4">
-                  <TbMapPin
-                    className="w-3.5 h-3.5 flex-shrink-0"
-                    style={{ color: "var(--color-accent)" }}
-                  />
-                  <p
-                    className="text-xs truncate"
-                    style={{ color: "var(--color-text-secondary)" }}
-                  >
+                  <TbMapPin className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
+                  <p className="text-xs truncate" style={{ color: "var(--color-text-secondary)" }}>
                     {hotel.location}
                   </p>
                 </div>
 
-                {/* Divider */}
-                <div
-                  className="my-3"
-                  style={{ borderTop: "1px solid var(--color-border)" }}
-                />
+                <div style={{ borderTop: "1px solid var(--color-border-dim)" }} className="my-3" />
 
-                {/* Price + CTA */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <p
-                      className="text-xs"
-                      style={{ color: "var(--color-text-muted)" }}
-                    >
+                    <p className="text-[10px] font-mono uppercase tracking-wider" style={{ color: "var(--color-text-muted)" }}>
                       From
                     </p>
                     <p
                       className="text-lg font-bold"
-                      style={{ color: "var(--color-accent)", fontFamily: "var(--font-playfair, serif)" }}
+                      style={{ color: "var(--color-accent)", fontFamily: "var(--font-display)" }}
                     >
                       ${hotel.price}
-                      <span
-                        className="text-xs font-normal ml-1"
-                        style={{ color: "var(--color-text-muted)" }}
-                      >
+                      <span className="text-xs font-normal ml-0.5 font-mono" style={{ color: "var(--color-text-muted)" }}>
                         /night
                       </span>
                     </p>
                   </div>
                   <button
                     id={`hotel-book-${hotel.id}`}
-                    className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 hover:opacity-90 active:scale-95"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-                      color: "oklch(10% 0.02 250)",
-                    }}
+                    className="ink-btn ink-btn-accent text-xs px-3 py-1.5"
                     aria-label={`Book ${hotel.name}`}
                   >
                     Book Now
@@ -231,19 +168,13 @@ const HotelSection = () => {
           ))}
         </div>
 
-        {/* Mobile — View All */}
         <div className="flex justify-center mt-10 md:hidden">
           <button
             id="hotels-view-all-mobile-btn"
-            className="px-8 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-80"
-            style={{
-              border: "1px solid var(--color-border)",
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-elevated)",
-            }}
+            className="ink-btn text-xs"
             aria-label="View all hotels"
           >
-            View All Hotels →
+            View All Hotels &rarr;
           </button>
         </div>
       </div>

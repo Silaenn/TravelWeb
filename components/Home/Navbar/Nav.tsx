@@ -3,7 +3,6 @@ import { navLinks, BRAND_NAME } from "@/constant/constant";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
-import { TbCompass } from "react-icons/tb";
 
 type Props = {
   openNav: () => void;
@@ -18,7 +17,6 @@ const Nav = ({ openNav, isOpen }: Props) => {
     const handleScroll = () => {
       setScrolled(window.scrollY >= 60);
 
-      // Active section tracking
       const sections = navLinks.map((l) => l.url.replace("#", ""));
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
@@ -46,96 +44,89 @@ const Nav = ({ openNav, isOpen }: Props) => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${
-        scrolled ? "glass shadow-2xl" : ""
+        scrolled ? "shadow-elevated" : ""
       }`}
       style={{
+        background: scrolled ? "var(--color-bg)" : "var(--color-bg)",
         borderBottom: scrolled
-          ? "1px solid oklch(100% 0 0 / 0.06)"
-          : "1px solid transparent",
+          ? "3px double var(--color-border)"
+          : "3px double var(--color-border)",
       }}
     >
-      <div className="container-voya flex items-center h-[72px] justify-between">
-        {/* Logo */}
-        <Link
-          href="#hero"
-          onClick={(e) => handleNavClick("#hero", e)}
-          className="flex items-center gap-3 group"
-          id="nav-logo"
-          aria-label={`${BRAND_NAME} — Home`}
-        >
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-              boxShadow: "0 0 20px oklch(75% 0.16 85 / 0.3)",
-            }}
-          >
-            <TbCompass className="w-5 h-5 text-black" />
+      <div className="container-voya flex flex-col items-center py-3">
+        {/* Masthead row */}
+        <div className="w-full flex items-center justify-between">
+          {/* Left: date (desktop only) */}
+          <div className="hidden lg:block">
+            <span className="masthead-sub">{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</span>
           </div>
-          <span
-            className="text-2xl font-bold tracking-tight transition-colors duration-300"
-            style={{
-              fontFamily: "var(--font-playfair, 'Playfair Display', serif)",
-              color: "var(--color-text-primary)",
-            }}
-          >
-            {BRAND_NAME}
-          </span>
-        </Link>
 
-        {/* Nav Links — Desktop */}
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
-          {navLinks.map((link) => {
-            const sectionId = link.url.replace("#", "");
-            const isActive = activeSection === sectionId;
-            return (
-              <Link
-                key={link.id}
-                href={link.url}
-                onClick={(e) => handleNavClick(link.url, e)}
-                className={`text-sm font-medium transition-colors duration-200 hover-underline ${
-                  isActive
-                    ? "text-gradient"
-                    : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
-                }`}
-                aria-current={isActive ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* CTA + Mobile Toggle */}
-        <div className="flex items-center gap-4">
-          <button
-            id="nav-book-cta"
-            className="hidden md:flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:opacity-90 active:scale-95"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-              color: "oklch(10% 0.02 250)",
-              boxShadow: "0 4px 16px oklch(75% 0.16 85 / 0.25)",
-            }}
-            aria-label="Book Now"
+          {/* Center: Brand nameplate */}
+          <Link
+            href="#hero"
+            onClick={(e) => handleNavClick("#hero", e)}
+            className="text-center group"
+            id="nav-logo"
+            aria-label={`${BRAND_NAME} — Home`}
           >
-            Book Now
-          </button>
+            <h1 className="masthead text-2xl md:text-3xl lg:text-4xl tracking-wide leading-none">
+              {BRAND_NAME}
+            </h1>
+            <p className="masthead-sub mt-0.5">{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
+          </Link>
 
-          <button
-            onClick={openNav}
-            className="lg:hidden p-2 rounded-lg transition-colors duration-200"
-            style={{ color: "var(--color-text-primary)" }}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? (
-              <HiXMark className="w-6 h-6" />
-            ) : (
-              <HiBars3BottomRight className="w-6 h-6" />
-            )}
-          </button>
+          {/* Right: CTA + Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <button
+              id="nav-book-cta"
+              className="hidden md:flex ink-btn ink-btn-accent text-xs px-4 py-1.5"
+              aria-label="Subscribe"
+            >
+              Subscribe
+            </button>
+
+            <button
+              onClick={openNav}
+              className="lg:hidden p-2 rounded transition-colors duration-200"
+              style={{ color: "var(--color-text-primary)" }}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? (
+                <HiXMark className="w-5 h-5" />
+              ) : (
+                <HiBars3BottomRight className="w-5 h-5" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom rule + nav links */}
+        <div
+          className="w-full mt-2 pt-2 hidden lg:flex items-center justify-center gap-6"
+          style={{ borderTop: "1px solid var(--color-border-dim)" }}
+        >
+          <nav className="flex items-center gap-6" aria-label="Primary navigation">
+            {navLinks.map((link) => {
+              const sectionId = link.url.replace("#", "");
+              const isActive = activeSection === sectionId;
+              return (
+                <Link
+                  key={link.id}
+                  href={link.url}
+                  onClick={(e) => handleNavClick(link.url, e)}
+                  className="text-xs font-medium uppercase tracking-widest transition-colors duration-200"
+                  style={{
+                    color: isActive ? "var(--color-accent)" : "var(--color-text-secondary)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
       </div>
     </header>

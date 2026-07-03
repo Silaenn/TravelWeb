@@ -7,7 +7,7 @@ import { TbChevronLeft, TbChevronRight, TbStarFilled } from "react-icons/tb";
 const ReviewsSection = () => {
   const [current, setCurrent] = useState(0);
   const total = reviewData.length;
-  const visible = 3; // show 3 cards at a time on desktop
+  const visible = 3;
 
   const prev = () => setCurrent((p) => (p - 1 + total) % total);
   const next = () => setCurrent((p) => (p + 1) % total);
@@ -19,21 +19,10 @@ const ReviewsSection = () => {
   return (
     <section
       id="reviews"
-      className="py-24 relative overflow-hidden"
-      style={{ background: "var(--color-bg)" }}
+      className="py-24 relative"
+      style={{ background: "var(--color-bg-surface)" }}
       aria-labelledby="reviews-heading"
     >
-      {/* Background grid lines */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-border) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="container-voya">
         {/* Header */}
         <div
@@ -41,64 +30,39 @@ const ReviewsSection = () => {
           data-aos="fade-up"
         >
           <div>
-            <div className="section-divider mb-4" />
-            <p
-              className="text-sm font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "var(--color-accent)" }}
-            >
-              Traveler Stories
-            </p>
+            <p className="section-kicker mb-2">Letters from Our Travellers</p>
+            <div className="double-rule-thin mb-4" />
             <h2
               id="reviews-heading"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold"
-              style={{
-                fontFamily: "var(--font-playfair, serif)",
-                color: "var(--color-text-primary)",
-              }}
+              className="section-headline"
             >
-              What Our Travelers
+              What Our Travellers
               <br />
-              <span className="text-gradient">Say About Voya</span>
+              <span style={{ color: "var(--color-accent)" }}>Say About Us</span>
             </h2>
           </div>
 
           {/* Overall rating */}
           <div
-            className="flex items-center gap-4 px-6 py-4 rounded-2xl"
-            style={{
-              background: "var(--color-bg-surface)",
-              border: "1px solid var(--color-border)",
-            }}
+            className="flex items-center gap-4 px-5 py-3 paper-card"
+            style={{ borderRadius: "var(--radius-sm)" }}
             data-aos="fade-left"
           >
             <div>
-              <p
-                className="text-4xl font-bold"
-                style={{ color: "var(--color-accent)", fontFamily: "var(--font-playfair, serif)" }}
-              >
+              <p className="text-4xl font-bold" style={{ color: "var(--color-accent)", fontFamily: "var(--font-display)" }}>
                 4.9
               </p>
               <div className="flex gap-0.5 mt-1">
                 {[...Array(5)].map((_, i) => (
-                  <TbStarFilled
-                    key={i}
-                    className="w-3.5 h-3.5"
-                    style={{ color: "var(--color-accent)" }}
-                  />
+                  <TbStarFilled key={i} className="w-3 h-3" style={{ color: "var(--color-aged-gold)" }} />
                 ))}
               </div>
             </div>
             <div>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--color-text-primary)" }}
-              >
+              <p className="text-sm font-medium" style={{ color: "var(--color-text-primary)" }}>
                 Overall Rating
               </p>
-              <p
-                className="text-xs"
-                style={{ color: "var(--color-text-muted)" }}
-              >
+              <p className="text-xs font-mono" style={{ color: "var(--color-text-muted)" }}>
                 Based on 12,000+ reviews
               </p>
             </div>
@@ -107,49 +71,39 @@ const ReviewsSection = () => {
 
         {/* Review cards */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"
           aria-live="polite"
-          aria-label="Customer reviews"
+          aria-label="Reader letters"
         >
           {getVisible().map((review, i) => (
             <article
               key={`${review.id}-${current}-${i}`}
-              className="rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300"
-              style={{
-                background: "var(--color-bg-elevated)",
-                border: "1px solid var(--color-border)",
-                boxShadow: "var(--shadow-card)",
-                animationDelay: `${i * 50}ms`,
-              }}
+              className="paper-card p-6 flex flex-col gap-4 transition-all duration-300"
+              style={{ borderRadius: "var(--radius-sm)" }}
               data-aos="fade-up"
               data-aos-delay={`${i * 80}`}
-              aria-label={`Review by ${review.name}`}
+              aria-label={`Letter from ${review.name}`}
             >
               {/* Stars */}
               <div className="flex gap-0.5">
                 {[...Array(review.rating)].map((_, j) => (
-                  <TbStarFilled
-                    key={j}
-                    className="w-3.5 h-3.5"
-                    style={{ color: "var(--color-accent)" }}
-                  />
+                  <TbStarFilled key={j} className="w-3.5 h-3.5" style={{ color: "var(--color-aged-gold)" }} />
                 ))}
               </div>
 
-              {/* Review text */}
+              {/* Review text — styled as letter */}
               <p
-                className="text-sm leading-relaxed flex-1"
+                className="text-sm leading-relaxed flex-1 italic"
                 style={{ color: "var(--color-text-secondary)" }}
               >
                 &ldquo;{review.review}&rdquo;
               </p>
 
-              {/* Divider */}
-              <div style={{ borderTop: "1px solid var(--color-border)" }} />
+              <div style={{ borderTop: "1px solid var(--color-border-dim)" }} />
 
               {/* Reviewer */}
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 sepia-img" style={{ borderRadius: "var(--radius-sm)" }}>
                   <Image
                     src={review.image}
                     alt={review.name}
@@ -158,13 +112,10 @@ const ReviewsSection = () => {
                   />
                 </div>
                 <div>
-                  <p
-                    className="text-sm font-semibold"
-                    style={{ color: "var(--color-text-primary)" }}
-                  >
+                  <p className="text-sm font-semibold" style={{ color: "var(--color-text-primary)" }}>
                     {review.name}
                   </p>
-                  <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
+                  <p className="text-xs font-mono" style={{ color: "var(--color-text-muted)" }}>
                     {review.role}
                   </p>
                 </div>
@@ -178,26 +129,26 @@ const ReviewsSection = () => {
           <button
             onClick={prev}
             id="reviews-prev-btn"
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] active:scale-95"
+            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 active:scale-95"
             style={{
-              border: "1px solid var(--color-border)",
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-elevated)",
+              background: "var(--color-bg-card)",
+              border: "2px solid var(--color-text-muted)",
+              color: "var(--color-accent)",
+              borderRadius: "var(--radius-sm)",
             }}
-            aria-label="Previous reviews"
+            aria-label="Previous letters"
           >
-            <TbChevronLeft className="w-5 h-5" />
+            <TbChevronLeft className="w-4 h-4" />
           </button>
 
-          {/* Dots */}
-          <div className="flex gap-1.5" role="tablist" aria-label="Review pages">
+          <div className="flex gap-1.5" role="tablist" aria-label="Letter pages">
             {Array.from({ length: total }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
                 role="tab"
                 aria-selected={i === current}
-                aria-label={`Go to review ${i + 1}`}
+                aria-label={`Go to letter ${i + 1}`}
                 className="rounded-full transition-all duration-300"
                 style={{
                   width: i === current ? "20px" : "6px",
@@ -206,6 +157,7 @@ const ReviewsSection = () => {
                     i === current
                       ? "var(--color-accent)"
                       : "var(--color-border)",
+                  borderRadius: "2px",
                 }}
               />
             ))}
@@ -214,15 +166,16 @@ const ReviewsSection = () => {
           <button
             onClick={next}
             id="reviews-next-btn"
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] active:scale-95"
+            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 active:scale-95"
             style={{
-              border: "1px solid var(--color-border)",
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-elevated)",
+              background: "var(--color-bg-card)",
+              border: "2px solid var(--color-text-muted)",
+              color: "var(--color-accent)",
+              borderRadius: "var(--radius-sm)",
             }}
-            aria-label="Next reviews"
+            aria-label="Next letters"
           >
-            <TbChevronRight className="w-5 h-5" />
+            <TbChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>

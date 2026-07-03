@@ -1,13 +1,13 @@
 // Data Statis — Platform Perjalanan TravEase
 
-export type Region = "Semua" | "Eropa" | "Asia" | "Amerika" | "Oseania";
+export type Region = "All" | "Europe" | "Asia" | "Americas" | "Oceania";
 
 export const destinationData = [
   {
     id: 1,
     image: "/images/e1.jpg",
     country: "Prancis",
-    region: "Eropa" as Region,
+    region: "Europe" as Region,
     travelers: "150.000",
     highlight: "Menara Eiffel & Riviera",
   },
@@ -15,7 +15,7 @@ export const destinationData = [
     id: 2,
     image: "/images/e3.jpg",
     country: "Amerika Serikat",
-    region: "Amerika" as Region,
+    region: "Americas" as Region,
     travelers: "250.000",
     highlight: "Taman Nasional & Kota-kota",
   },
@@ -23,7 +23,7 @@ export const destinationData = [
     id: 3,
     image: "/images/e4.jpg",
     country: "Italia",
-    region: "Eropa" as Region,
+    region: "Europe" as Region,
     travelers: "180.000",
     highlight: "Roma, Florence & Amalfi",
   },
@@ -39,7 +39,7 @@ export const destinationData = [
     id: 5,
     image: "/images/e2.jpg",
     country: "Australia",
-    region: "Oseania" as Region,
+    region: "Oceania" as Region,
     travelers: "120.000",
     highlight: "Great Barrier Reef & Sydney",
   },
@@ -47,7 +47,7 @@ export const destinationData = [
     id: 6,
     image: "/images/e6.jpg",
     country: "Kanada",
-    region: "Amerika" as Region,
+    region: "Americas" as Region,
     travelers: "175.000",
     highlight: "Pegunungan Rocky & Air Terjun Niagara",
   },
@@ -55,7 +55,7 @@ export const destinationData = [
     id: 7,
     image: "/images/e7.jpg",
     country: "Jerman",
-    region: "Eropa" as Region,
+    region: "Europe" as Region,
     travelers: "160.000",
     highlight: "Bavaria & Berlin",
   },
@@ -63,7 +63,7 @@ export const destinationData = [
     id: 8,
     image: "/images/e8.jpg",
     country: "Brasil",
-    region: "Amerika" as Region,
+    region: "Americas" as Region,
     travelers: "140.000",
     highlight: "Amazon & Rio de Janeiro",
   },

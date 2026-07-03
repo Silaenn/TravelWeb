@@ -22,7 +22,7 @@ export const navLinks = [
   {
     id: 5,
     url: "#reviews",
-    label: "Reviews",
+    label: "Letters",
   },
   {
     id: 6,
@@ -31,5 +31,5 @@ export const navLinks = [
   },
 ];
 
-export const BRAND_NAME = "Voya";
-export const BRAND_TAGLINE = "Discover the world.";
+export const BRAND_NAME = "The Traveller's Gazette";
+export const BRAND_TAGLINE = "A Journal of Curious Journeys — Est. 1924";

@@ -21,12 +21,12 @@ const ScrollToTop = () => {
     <button
       onClick={scrollTop}
       id="scroll-to-top-btn"
-      className="fixed bottom-6 right-6 z-[900] w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:opacity-90 active:scale-95 hover:shadow-lg"
+      className="fixed bottom-6 right-6 z-[900] w-10 h-10 flex items-center justify-center transition-all duration-300 hover:opacity-80 active:scale-95"
       style={{
-        background:
-          "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-        boxShadow: "0 4px 20px oklch(75% 0.16 85 / 0.4)",
-        color: "oklch(10% 0.02 250)",
+        background: "var(--color-text-primary)",
+        color: "var(--color-bg-card)",
+        borderRadius: "var(--radius-sm)",
+        border: "1px solid var(--color-text-primary)",
       }}
       aria-label="Scroll back to top"
     >

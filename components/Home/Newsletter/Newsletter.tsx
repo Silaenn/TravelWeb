@@ -17,72 +17,35 @@ const NewsletterSection = () => {
   return (
     <section
       id="newsletter"
-      className="py-24 relative overflow-hidden"
-      style={{ background: "var(--color-bg)" }}
+      className="py-24 relative"
+      style={{ background: "var(--color-bg-surface)" }}
       aria-labelledby="newsletter-heading"
     >
-      {/* Decorative orbs */}
-      <div
-        className="absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-[0.06] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--color-accent), transparent)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full opacity-[0.06] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--color-accent), transparent)",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="container-voya">
         <div
           className="max-w-2xl mx-auto text-center"
           data-aos="fade-up"
         >
-          {/* Eyebrow */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
-            style={{
-              background: "oklch(75% 0.16 85 / 0.1)",
-              border: "1px solid oklch(75% 0.16 85 / 0.25)",
-            }}
-          >
-            <span
-              className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--color-accent)" }}
-            >
-              ✦ Join the Voya Club
-            </span>
-          </div>
+          <p className="section-kicker mb-3">Dispatch Subscription</p>
+          <div className="double-rule-thin mb-6" />
 
           <h2
             id="newsletter-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
-            style={{
-              fontFamily: "var(--font-playfair, serif)",
-              color: "var(--color-text-primary)",
-            }}
+            className="section-headline mb-4"
           >
             Your Journey
             <br />
-            <span className="text-gradient">Starts with a Click</span>
+            <span style={{ color: "var(--color-accent)" }}>Starts with a Click</span>
           </h2>
 
           <p
-            className="text-base mb-10"
-            style={{
-              color: "var(--color-text-secondary)",
-              lineHeight: "1.8",
-            }}
+            className="text-base mb-8 max-w-md mx-auto leading-relaxed"
+            style={{ color: "var(--color-text-secondary)" }}
           >
-            Subscribe for exclusive travel deals, curated destination guides, and
-            insider tips — delivered straight to your inbox.
+            Subscribe to our weekly dispatch &mdash; exclusive travel deals, curated destination
+            guides, and insider tips, delivered to your door.
           </p>
 
-          {/* Form */}
           {!submitted ? (
             <form
               onSubmit={handleSubmit}
@@ -90,11 +53,11 @@ const NewsletterSection = () => {
               aria-label="Newsletter subscription form"
             >
               <div
-                className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200"
+                className="flex-1 flex items-center gap-3 px-4 py-3 transition-all duration-200"
                 style={{
-                  background: "var(--color-bg-elevated)",
-                  border: `1px solid ${focused ? "oklch(75% 0.16 85 / 0.4)" : "var(--color-border)"}`,
-                  boxShadow: focused ? "0 0 20px oklch(75% 0.16 85 / 0.1)" : "none",
+                  background: "var(--color-bg-card)",
+                  border: `1px solid ${focused ? "var(--color-accent)" : "var(--color-border)"}`,
+                  borderRadius: "var(--radius-sm)",
                 }}
               >
                 <input
@@ -104,10 +67,10 @@ const NewsletterSection = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setFocused(false)}
-                  placeholder="Your email address"
+                  placeholder="your@address.com"
                   required
                   className="flex-1 bg-transparent border-none outline-none text-sm"
-                  style={{ color: "var(--color-text-primary)" }}
+                  style={{ color: "var(--color-text-primary)", fontFamily: "var(--font-body)" }}
                   aria-label="Email address for newsletter"
                 />
               </div>
@@ -115,48 +78,41 @@ const NewsletterSection = () => {
               <button
                 id="newsletter-subscribe-btn"
                 type="submit"
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:opacity-90 active:scale-95 flex-shrink-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-                  color: "oklch(10% 0.02 250)",
-                  boxShadow: "0 4px 20px oklch(75% 0.16 85 / 0.3)",
-                }}
-                aria-label="Subscribe to newsletter"
+                className="ink-btn ink-btn-accent flex items-center justify-center gap-2 text-xs flex-shrink-0"
+                aria-label="Subscribe to dispatch"
               >
-                <TbSend className="w-4 h-4" />
+                <TbSend className="w-3.5 h-3.5" />
                 Subscribe
               </button>
             </form>
           ) : (
             <div
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-2xl max-w-md mx-auto"
+              className="flex items-center justify-center gap-3 px-6 py-4 mx-auto max-w-md ink-wash-accent"
               style={{
-                background: "oklch(75% 0.16 85 / 0.1)",
-                border: "1px solid oklch(75% 0.16 85 / 0.3)",
+                border: "1px solid rgba(139, 58, 42, 0.2)",
+                borderRadius: "var(--radius-sm)",
               }}
               role="alert"
               aria-live="polite"
             >
               <div
-                className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ background: "var(--color-accent)" }}
+                className="w-8 h-8 flex items-center justify-center flex-shrink-0"
+                style={{ background: "var(--color-accent)", borderRadius: "var(--radius-sm)" }}
               >
-                <TbCheck className="w-4 h-4 text-black" />
+                <TbCheck className="w-4 h-4" style={{ color: "var(--color-bg-card)" }} />
               </div>
               <p className="text-sm" style={{ color: "var(--color-text-primary)" }}>
-                <span className="font-semibold">You&apos;re in!</span> Welcome to the Voya Club.
-                Check your inbox soon.
+                <span className="font-semibold">You&apos;re on the list!</span> Welcome to the Gazette.
+                Look for our first dispatch in your inbox soon.
               </p>
             </div>
           )}
 
-          {/* Trust note */}
           <p
-            className="mt-5 text-xs"
+            className="mt-5 text-xs font-mono"
             style={{ color: "var(--color-text-muted)" }}
           >
-            No spam, ever. Unsubscribe anytime. &nbsp;·&nbsp; Privacy policy
+            No spam, ever. Unsubscribe anytime. &nbsp;·&nbsp; Privacy Policy
           </p>
         </div>
       </div>

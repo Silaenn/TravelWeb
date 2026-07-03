@@ -18,31 +18,23 @@ const DestinationSection = () => {
     <section
       id="destinations"
       className="py-24"
-      style={{ background: "var(--color-bg)" }}
+      style={{ background: "var(--color-bg-surface)" }}
       aria-labelledby="destinations-heading"
     >
       <div className="container-voya">
         {/* Section Header */}
         <div className="mb-12" data-aos="fade-up">
-          <div className="section-divider mb-4" />
-          <p
-            className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "var(--color-accent)" }}
-          >
-            Popular Destinations
-          </p>
+          <p className="section-kicker mb-2">Travelogue</p>
+          <div className="double-rule-thin mb-4" />
           <h2
             id="destinations-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold"
-            style={{
-              fontFamily: "var(--font-playfair, serif)",
-              color: "var(--color-text-primary)",
-            }}
+            className="section-headline"
           >
             Explore the World&apos;s
             <br />
-            <span className="text-gradient">Most Loved Places</span>
+            <span style={{ color: "var(--color-accent)" }}>Most Loved Places</span>
           </h2>
+          <p className="byline mt-2">A curated selection of extraordinary destinations</p>
         </div>
 
         {/* Filter Tabs */}
@@ -58,17 +50,16 @@ const DestinationSection = () => {
               key={region}
               id={`destination-filter-${region.toLowerCase()}`}
               onClick={() => setActiveRegion(region)}
-              className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-250 cursor-pointer"
+              className="text-xs font-mono uppercase tracking-wider px-4 py-1.5 transition-all duration-200 cursor-pointer"
               style={
                 activeRegion === region
                   ? {
-                      background:
-                        "linear-gradient(135deg, var(--color-accent), var(--color-accent-glow))",
-                      color: "oklch(10% 0.02 250)",
-                      boxShadow: "0 4px 16px oklch(75% 0.16 85 / 0.3)",
+                      background: "var(--color-text-primary)",
+                      color: "var(--color-bg-card)",
+                      border: "1px solid var(--color-text-primary)",
                     }
                   : {
-                      background: "var(--color-bg-surface)",
+                      background: "transparent",
                       color: "var(--color-text-secondary)",
                       border: "1px solid var(--color-border)",
                     }
@@ -85,85 +76,76 @@ const DestinationSection = () => {
           {filtered.map((dest, i) => (
             <div
               key={dest.id}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer"
+              className="group relative overflow-hidden cursor-pointer paper-card"
               style={{
-                height: i === 0 || i === 3 ? "380px" : "280px",
-                background: "var(--color-bg-card)",
-                boxShadow: "var(--shadow-card)",
+                height: "300px",
+                borderRadius: "var(--radius-sm)",
               }}
               data-aos="fade-up"
               data-aos-delay={`${i * 60}`}
               role="article"
               aria-label={`${dest.country} — ${dest.highlight}`}
             >
-              {/* Image */}
               <Image
                 src={dest.image}
                 alt={`${dest.country} travel destination`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-110 sepia-img"
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
 
-              {/* Gradient overlay */}
               <div
                 className="absolute inset-0 transition-opacity duration-300"
                 style={{
                   background:
-                    "linear-gradient(to top, oklch(5% 0.02 250 / 0.9) 0%, oklch(5% 0.02 250 / 0.2) 50%, transparent 100%)",
+                    "linear-gradient(to top, rgba(44, 24, 16, 0.85) 0%, rgba(44, 24, 16, 0.1) 50%, transparent 100%)",
                 }}
                 aria-hidden="true"
               />
 
-              {/* Region badge */}
               <div
-                className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold"
+                className="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider"
                 style={{
-                  background: "oklch(0% 0 0 / 0.5)",
-                  backdropFilter: "blur(8px)",
+                  background: "var(--color-bg-card)",
                   color: "var(--color-accent)",
-                  border: "1px solid oklch(75% 0.16 85 / 0.3)",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-sm)",
                 }}
               >
                 {dest.region}
               </div>
 
-              {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3
-                  className="text-lg font-bold text-white mb-1"
-                  style={{ fontFamily: "var(--font-playfair, serif)" }}
+                  className="text-lg font-bold mb-1"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    color: "var(--color-bg-card)",
+                  }}
                 >
                   {dest.country}
                 </h3>
                 <p
                   className="text-xs mb-2"
-                  style={{ color: "oklch(70% 0.01 250)" }}
+                  style={{ color: "rgba(242, 238, 231, 0.7)" }}
                 >
                   {dest.highlight}
                 </p>
                 <div className="flex items-center gap-1">
-                  <TbUsers className="w-3 h-3" style={{ color: "var(--color-accent)" }} />
-                  <span className="text-xs" style={{ color: "var(--color-accent)" }}>
-                    {dest.travelers} travelers
+                  <TbUsers className="w-3 h-3" style={{ color: "var(--color-aged-gold)" }} />
+                  <span className="text-xs font-mono" style={{ color: "var(--color-aged-gold)" }}>
+                    {dest.travelers} travellers
                   </span>
                 </div>
               </div>
 
-              {/* Hover: explore button */}
               <div
                 className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 aria-hidden="true"
               >
-                <div
-                  className="px-5 py-2 rounded-full text-sm font-semibold"
-                  style={{
-                    background: "var(--color-accent)",
-                    color: "oklch(10% 0.02 250)",
-                  }}
-                >
-                  Explore →
-                </div>
+                <span className="ink-btn text-xs px-4 py-1.5" style={{ borderColor: "var(--color-bg-card)", color: "var(--color-bg-card)" }}>
+                  Read More &rarr;
+                </span>
               </div>
             </div>
           ))}
@@ -177,15 +159,10 @@ const DestinationSection = () => {
         >
           <button
             id="destinations-view-all-btn"
-            className="flex items-center gap-2 px-8 py-3 rounded-full text-sm font-semibold transition-all duration-300 hover:opacity-80 active:scale-95"
-            style={{
-              border: "1px solid var(--color-border)",
-              color: "var(--color-text-secondary)",
-              background: "var(--color-bg-surface)",
-            }}
+            className="ink-btn flex items-center gap-2 text-xs"
             aria-label="View all destinations"
           >
-            <TbMapPin className="w-4 h-4" style={{ color: "var(--color-accent)" }} />
+            <TbMapPin className="w-3.5 h-3.5" />
             View All Destinations
           </button>
         </div>
