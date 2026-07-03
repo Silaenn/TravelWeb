@@ -1,16 +1,24 @@
 "use client";
 import { reviewData } from "@/data/data";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { TbChevronLeft, TbChevronRight, TbStarFilled } from "react-icons/tb";
 
 const ReviewsSection = () => {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("right");
   const total = reviewData.length;
   const visible = 3;
 
-  const prev = () => setCurrent((p) => (p - 1 + total) % total);
-  const next = () => setCurrent((p) => (p + 1) % total);
+  const prev = useCallback(() => {
+    setDirection("left");
+    setCurrent((p) => (p - 1 + total) % total);
+  }, [total]);
+
+  const next = useCallback(() => {
+    setDirection("right");
+    setCurrent((p) => (p + 1) % total);
+  }, [total]);
 
   const getVisible = () => {
     return Array.from({ length: visible }, (_, i) => reviewData[(current + i) % total]);
@@ -40,10 +48,7 @@ const ReviewsSection = () => {
             </h2>
           </div>
 
-          <div
-            className="flex items-center gap-4 px-5 py-3 card"
-            data-aos="fade-left"
-          >
+          <div className="flex items-center gap-4 px-5 py-3 card" data-aos="fade-left">
             <div>
               <p className="text-4xl font-bold" style={{ color: "var(--color-primary)", fontFamily: "var(--font-display)" }}>
                 4.9
@@ -66,15 +71,16 @@ const ReviewsSection = () => {
         </div>
 
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8 overflow-hidden"
           aria-live="polite"
         >
           {getVisible().map((review, i) => (
             <article
               key={`${review.id}-${current}-${i}`}
-              className="card p-6 flex flex-col gap-4 transition-all duration-300"
-              data-aos="fade-up"
-              data-aos-delay={`${i * 80}`}
+              className="card p-6 flex flex-col gap-4 transition-all duration-400"
+              style={{
+                animation: `slideInFrom${direction === "right" ? "Right" : "Left"} 0.4s ease-out`,
+              }}
               aria-label={`Review from ${review.name}`}
             >
               <div className="rating-stars flex gap-0.5">
@@ -83,10 +89,7 @@ const ReviewsSection = () => {
                 ))}
               </div>
 
-              <p
-                className="text-sm leading-relaxed flex-1"
-                style={{ color: "var(--color-text-secondary)" }}
-              >
+              <p className="text-sm leading-relaxed flex-1" style={{ color: "var(--color-text-secondary)" }}>
                 &ldquo;{review.review}&rdquo;
               </p>
 
@@ -133,7 +136,10 @@ const ReviewsSection = () => {
             {Array.from({ length: total }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                onClick={() => {
+                  setDirection(i > current ? "right" : "left");
+                  setCurrent(i);
+                }}
                 role="tab"
                 aria-selected={i === current}
                 aria-label={`Go to review ${i + 1}`}
@@ -165,6 +171,29 @@ const ReviewsSection = () => {
           </button>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };
