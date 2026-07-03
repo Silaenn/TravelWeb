@@ -47,18 +47,24 @@ const Nav = ({ openNav, isOpen }: Props) => {
         scrolled ? "shadow-elevated" : ""
       }`}
       style={{
-        background: scrolled ? "var(--color-bg)" : "var(--color-bg)",
-        borderBottom: scrolled
-          ? "3px double var(--color-border)"
-          : "3px double var(--color-border)",
+        background: "var(--color-bg)",
+        borderBottom: "3px double var(--color-border)",
       }}
     >
       <div className="container-voya flex flex-col items-center py-3">
         {/* Masthead row */}
         <div className="w-full flex items-center justify-between">
-          {/* Left: date (desktop only) */}
-          <div className="hidden lg:block">
-            <span className="masthead-sub">{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</span>
+          {/* Left: Date */}
+          <div
+            className="hidden lg:block text-xs uppercase tracking-wider w-48 text-left"
+            style={{ fontFamily: "var(--font-mono)", color: "var(--color-text-muted)" }}
+          >
+            {new Date().toLocaleDateString("en-GB", {
+              weekday: "short",
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
           </div>
 
           {/* Center: Brand nameplate */}
@@ -72,19 +78,10 @@ const Nav = ({ openNav, isOpen }: Props) => {
             <h1 className="masthead text-2xl md:text-3xl lg:text-4xl tracking-wide leading-none">
               {BRAND_NAME}
             </h1>
-            <p className="masthead-sub mt-0.5">{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
           </Link>
 
-          {/* Right: CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
-            <button
-              id="nav-book-cta"
-              className="hidden md:flex ink-btn ink-btn-accent text-xs px-4 py-1.5"
-              aria-label="Subscribe"
-            >
-              Subscribe
-            </button>
-
+          {/* Right: Mobile Toggle */}
+          <div className="w-48 flex justify-end">
             <button
               onClick={openNav}
               className="lg:hidden p-2 rounded transition-colors duration-200"
@@ -100,6 +97,14 @@ const Nav = ({ openNav, isOpen }: Props) => {
             </button>
           </div>
         </div>
+
+        {/* Tagline */}
+        <p
+          className="mt-0.5 text-xs text-center"
+          style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-body)" }}
+        >
+          Est. 1924 — A Journal of Curious Journeys
+        </p>
 
         {/* Bottom rule + nav links */}
         <div

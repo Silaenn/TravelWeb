@@ -31,8 +31,8 @@
 
     /* === TYPOGRAPHY === */
     --font-display: 'Playfair Display', Georgia, serif;
-    --font-body:    'IBM Plex Serif', Georgia, serif;
-    --font-mono:    'Courier Prime', 'Courier New', monospace;
+    --font-body:    'Old Standard TT', Georgia, serif;
+    --font-mono:    'Special Elite', 'Courier New', monospace;
 
     /* === SPACING SCALE === */
     --space-xs:  0.25rem;

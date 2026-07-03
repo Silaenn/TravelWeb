@@ -71,16 +71,6 @@ const MobileNav = ({ closeNav }: Props) => {
           ))}
         </nav>
 
-        <div className="my-8" style={{ borderTop: "1px solid var(--color-border)" }} />
-
-        <button
-          id="mobile-nav-book-cta"
-          className="w-full ink-btn ink-btn-accent text-center"
-          aria-label="Subscribe"
-        >
-          Subscribe
-        </button>
-
         <p
           className="mt-auto pt-8 text-xs"
           style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}
