@@ -214,9 +214,9 @@ npm run build
 
 ## Author
 
-**Voya Travel** — [@voyatravel](https://github.com/your-username)
+**Silaenn** — [@Silaenn](https://github.com/Silaenn)
 
-Project Link: [https://github.com/your-username/voya-travel](https://github.com/your-username/voya-travel)
+Project Link: [https://github.com/Silaenn/TravelWeb](https://github.com/Silaenn/TravelWeb)
 
 ---
 
