@@ -96,7 +96,7 @@ const Hero = () => {
       />
 
       <div
-        className={`container-voya relative z-10 w-full transition-all duration-1000 ${
+        className={`container-voya relative z-10 transition-all duration-1000 ${
           loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >

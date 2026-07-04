@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${spaceGrotesk.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${fraunces.variable} ${spaceGrotesk.variable} overflow-x-hidden`}>
+      <body className="antialiased overflow-x-hidden">
         <ResponsiveNav />
         {children}
         <Footer />

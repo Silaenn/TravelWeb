@@ -44,13 +44,11 @@ const Nav = ({ openNav, isOpen }: Props) => {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-[1000] transition-colors duration-500"
+      className="fixed top-0 left-0 w-full max-w-full z-[1000] transition-colors duration-500"
       style={{
         background: scrolled
           ? "rgba(242, 237, 230, 0.97)"
           : "rgba(242, 237, 230, 0)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
         borderBottom: scrolled
           ? "1px solid var(--color-border)"
           : "1px solid rgba(255, 255, 255, 0.15)",
@@ -89,7 +87,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
 
         {/* Nav links — desktop */}
         <nav
-          className="hidden lg:flex items-center gap-1"
+          className="hidden lg:flex items-center gap-0.5"
           aria-label="Primary navigation"
         >
           {navLinks.map((link) => {
