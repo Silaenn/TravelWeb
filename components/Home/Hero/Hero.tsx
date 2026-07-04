@@ -210,7 +210,7 @@ const Hero = () => {
 
       <button
         onClick={handleScrollDown}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 transition-opacity duration-300 hover:opacity-60 animate-bounce"
+        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1 transition-opacity duration-300 hover:opacity-60 animate-bounce"
         style={{ color: "rgba(255, 255, 255, 0.5)" }}
         aria-label="Scroll to learn more"
       >
