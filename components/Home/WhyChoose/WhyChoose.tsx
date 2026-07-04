@@ -66,8 +66,8 @@ const WhyChooseSection = () => {
             <div
               className="flex items-center gap-3 p-4 rounded-lg mb-6 transition-all duration-200 hover:border-[var(--color-primary)] hover:scale-[1.02]"
               style={{
-                background: "rgba(11, 94, 92, 0.06)",
-                border: "1px solid rgba(11, 94, 92, 0.12)",
+                background: "rgba(var(--color-primary-rgb), 0.06)",
+                border: "1px solid rgba(var(--color-primary-rgb), 0.12)",
               }}
             >
               <div
@@ -106,7 +106,7 @@ const WhyChooseSection = () => {
                   <div
                     className="w-10 h-10 flex items-center justify-center rounded-md mb-4 transition-transform duration-200 group-hover:scale-110 group-hover:bg-[var(--color-primary)]"
                     style={{
-                      background: "rgba(11, 94, 92, 0.08)",
+                      background: "rgba(var(--color-primary-rgb), 0.08)",
                     }}
                   >
                     <Icon

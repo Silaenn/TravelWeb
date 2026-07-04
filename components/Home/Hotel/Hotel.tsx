@@ -69,7 +69,7 @@ const HotelSection = () => {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(11, 94, 92, 0.5) 0%, transparent 60%)",
+                      "linear-gradient(to top, rgba(var(--color-primary-rgb), 0.5) 0%, transparent 60%)",
                   }}
                   aria-hidden="true"
                 />

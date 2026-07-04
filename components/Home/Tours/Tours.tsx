@@ -60,7 +60,7 @@ const ToursSection = () => {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(11, 94, 92, 0.3), transparent)",
+                      "linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.3), transparent)",
                   }}
                   aria-hidden="true"
                 />

@@ -81,7 +81,7 @@ const Hero = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(11, 94, 92, 0.7) 0%, rgba(11, 94, 92, 0.4) 50%, rgba(11, 94, 92, 0.8) 100%)",
+            "linear-gradient(to bottom, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.4) 50%, rgba(var(--color-primary-rgb), 0.8) 100%)",
         }}
         aria-hidden="true"
       />

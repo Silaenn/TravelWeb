@@ -59,7 +59,7 @@ const NewsSection = () => {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to top, rgba(11, 94, 92, 0.9) 0%, rgba(11, 94, 92, 0.2) 50%, transparent 100%)",
+                  "linear-gradient(to top, rgba(var(--color-primary-rgb), 0.9) 0%, rgba(var(--color-primary-rgb), 0.2) 50%, transparent 100%)",
               }}
               aria-hidden="true"
             />
@@ -111,7 +111,7 @@ const NewsSection = () => {
 
                 <div className="flex flex-col justify-between py-0.5 min-w-0">
                   <div>
-                    <span className="tag inline-flex mb-2" style={{ background: "rgba(11, 94, 92, 0.08)", color: "var(--color-primary)", border: "1px solid rgba(11, 94, 92, 0.15)" }}>
+                    <span className="tag inline-flex mb-2" style={{ background: "rgba(var(--color-primary-rgb), 0.08)", color: "var(--color-primary)", border: "1px solid rgba(var(--color-primary-rgb), 0.15)" }}>
                       {article.category}
                     </span>
                     <h3

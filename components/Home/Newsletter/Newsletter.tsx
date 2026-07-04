@@ -52,7 +52,7 @@ const NewsletterSection = () => {
           >
             Your Journey
             <br />
-            <span style={{ color: "var(--color-brass)" }}>Starts with a Click</span>
+            <span style={{ color: "#D4B07A" }}>Starts with a Click</span>
           </h2>
 
           <p
@@ -121,7 +121,7 @@ const NewsletterSection = () => {
             </div>
           )}
 
-          <p className="mt-5 text-xs" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
+          <p className="mt-5 text-xs" style={{ color: "rgba(255, 255, 255, 0.65)" }}>
             No spam, ever. Unsubscribe anytime. &nbsp;·&nbsp; Privacy Policy
           </p>
         </div>

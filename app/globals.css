@@ -10,6 +10,7 @@
     --color-primary:      #0B5E5C;
     --color-primary-dim:  #084A48;
     --color-primary-glow: #0E7270;
+    --color-primary-rgb: 11, 94, 92;
 
     --color-accent:      #B85432;
     --color-accent-dim:  #9E472A;
@@ -19,7 +20,7 @@
 
     --color-text-primary:   #1C1814;
     --color-text-secondary: #5C5248;
-    --color-text-muted:     #9A9086;
+    --color-text-muted:     #6B6259;
 
     --color-border:     #D6CDC2;
     --color-border-dim: #E3DCD3;

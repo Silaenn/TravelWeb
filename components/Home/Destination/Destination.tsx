@@ -91,7 +91,7 @@ const DestinationSection = () => {
                 className="absolute inset-0 transition-opacity duration-300"
                 style={{
                   background:
-                    "linear-gradient(to top, rgba(11, 94, 92, 0.85) 0%, rgba(11, 94, 92, 0.1) 50%, transparent 100%)",
+                    "linear-gradient(to top, rgba(var(--color-primary-rgb), 0.85) 0%, rgba(var(--color-primary-rgb), 0.1) 50%, transparent 100%)",
                 }}
                 aria-hidden="true"
               />
