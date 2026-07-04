@@ -28,7 +28,7 @@ const NewsSection = () => {
               <br />
               <span style={{ color: "var(--color-primary)" }}>From the World</span>
             </h2>
-            <p className="text-sm mt-2" style={{ color: "var(--color-text-muted)" }}>
+            <p className="text-sm mt-3" style={{ color: "var(--color-text-muted)" }}>
               Dispatches from our explorers around the globe
             </p>
           </div>
@@ -91,7 +91,7 @@ const NewsSection = () => {
             {rest.map((article, i) => (
               <article
                 key={article.id}
-                className="group flex gap-4 p-4 card cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                className="group flex gap-4 p-5 card cursor-pointer transition-all duration-300 hover:-translate-y-1"
                 data-aos="fade-left"
                 data-aos-delay={`${i * 80}`}
                 aria-label={article.title}

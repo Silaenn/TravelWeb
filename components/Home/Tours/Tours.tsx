@@ -26,7 +26,7 @@ const ToursSection = () => {
               <br />
               <span style={{ color: "var(--color-primary)" }}>Tours &amp; Experiences</span>
             </h2>
-            <p className="text-sm mt-2" style={{ color: "var(--color-text-muted)" }}>
+            <p className="text-sm mt-3" style={{ color: "var(--color-text-muted)" }}>
               Curated journeys for the modern explorer
             </p>
           </div>
@@ -43,12 +43,12 @@ const ToursSection = () => {
           {toursData.map((tour, i) => (
             <article
               key={tour.id}
-              className="group flex gap-4 p-4 card cursor-pointer transition-all duration-300 hover:border-[var(--color-primary)]"
+                className="group flex gap-4 p-5 card cursor-pointer transition-all duration-300 hover:border-[var(--color-primary)]"
               data-aos="fade-up"
               data-aos-delay={`${i * 80}`}
               aria-label={`${tour.title} — ${tour.location}`}
             >
-              <div className="relative w-36 h-36 flex-shrink-0 overflow-hidden rounded-md">
+              <div className="relative w-36 h-full sm:h-36 flex-shrink-0 overflow-hidden rounded-md">
                 <Image
                   src={tour.image}
                   alt={tour.title}
@@ -91,7 +91,7 @@ const ToursSection = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2 flex-wrap">
                   <div className="flex items-center flex-wrap gap-1.5">
                     <div className="rating-stars">
                       {[...Array(5)].map((_, i) => (
@@ -112,7 +112,7 @@ const ToursSection = () => {
                     </span>
                     <button
                       id={`tour-book-${tour.id}`}
-                      className="btn-accent px-2 py-1 text-xs"
+                      className="btn-accent px-3 py-1.5 text-xs"
                       aria-label={`Book tour: ${tour.title}`}
                     >
                       <TbArrowRight className="w-3.5 h-3.5" />

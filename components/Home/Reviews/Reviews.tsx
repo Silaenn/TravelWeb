@@ -87,7 +87,7 @@ const ReviewsSection = () => {
           {getVisible().map((review, i) => (
             <article
               key={`${review.id}-${current}-${i}`}
-              className="card p-6 flex flex-col gap-4 transition-all duration-400"
+              className="card p-5 flex flex-col gap-4 transition-all duration-400"
               style={{
                 animation: `slideInFrom${direction === "right" ? "Right" : "Left"} 0.4s ease-out`,
               }}

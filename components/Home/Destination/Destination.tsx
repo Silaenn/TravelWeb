@@ -32,7 +32,7 @@ const DestinationSection = () => {
             <br />
             <span style={{ color: "var(--color-primary)" }}>Most Loved Places</span>
           </h2>
-          <p className="text-sm mt-2" style={{ color: "var(--color-text-muted)" }}>
+            <p className="text-sm mt-3" style={{ color: "var(--color-text-muted)" }}>
             A curated selection of extraordinary destinations
           </p>
         </div>
@@ -69,7 +69,7 @@ const DestinationSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" key={activeRegion}>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" key={activeRegion}>
           {filtered.map((dest) => (
             <div
               key={dest.id}

@@ -40,7 +40,7 @@ const WhyChooseSection = () => {
       aria-labelledby="why-choose-heading"
     >
       <div className="container-voya">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Content */}
           <div data-aos="fade-right">
             <p className="section-label mb-3">Why Travel With Us</p>

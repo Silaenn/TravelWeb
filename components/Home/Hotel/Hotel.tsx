@@ -35,7 +35,7 @@ const HotelSection = () => {
               <br />
               <span style={{ color: "var(--color-primary)" }}>Finest Places</span>
             </h2>
-            <p className="text-sm mt-2" style={{ color: "var(--color-text-muted)" }}>
+            <p className="text-sm mt-3" style={{ color: "var(--color-text-muted)" }}>
               Handpicked lodgings for every traveller
             </p>
           </div>
@@ -111,7 +111,7 @@ const HotelSection = () => {
                 </div>
               </div>
 
-              <div className="p-4">
+              <div className="p-5">
                 <h3
                   className="text-base font-semibold mb-2 leading-tight line-clamp-2 transition-colors duration-200 group-hover:text-[var(--color-primary)]"
                   style={{ color: "var(--color-text-primary)" }}

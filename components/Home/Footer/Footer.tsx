@@ -35,7 +35,7 @@ const Footer = () => {
       aria-label={`${BRAND_NAME} footer`}
     >
       <div className="container-voya py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Image src="/images/logo.png" alt={BRAND_NAME} width={32} height={32} className="w-8 h-8 object-contain" />

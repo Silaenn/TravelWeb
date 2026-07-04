@@ -87,7 +87,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
 
         {/* Nav links — desktop */}
         <nav
-          className="hidden lg:flex items-center gap-0.5"
+          className="hidden lg:flex items-center gap-1"
           aria-label="Primary navigation"
         >
           {navLinks.map((link) => {
