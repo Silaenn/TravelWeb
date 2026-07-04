@@ -20,7 +20,7 @@ const MobileNav = ({ closeNav }: Props) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[999] flex" aria-label="Mobile navigation">
+    <div className="fixed inset-0 z-[999] flex overflow-x-hidden" aria-label="Mobile navigation">
       <div
         className="absolute inset-0"
         style={{ background: "rgba(28, 24, 20, 0.5)" }}

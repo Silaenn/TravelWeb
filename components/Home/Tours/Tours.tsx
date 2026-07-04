@@ -91,8 +91,8 @@ const ToursSection = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-3">
-                  <div className="flex items-center gap-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-3 gap-2">
+                  <div className="flex items-center flex-wrap gap-1.5">
                     <div className="rating-stars">
                       {[...Array(5)].map((_, i) => (
                         <TbStarFilled key={i} className="w-3 h-3" fill={i < Math.round(tour.rating) ? "var(--color-brass)" : "none"} />
