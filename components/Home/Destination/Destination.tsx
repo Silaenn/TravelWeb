@@ -69,14 +69,13 @@ const DestinationSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map((dest, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" key={activeRegion}>
+          {filtered.map((dest) => (
             <div
               key={dest.id}
               className="group relative overflow-hidden cursor-pointer card"
               style={{ height: "300px" }}
               data-aos="fade-up"
-              data-aos-delay={`${i * 60}`}
               role="article"
               aria-label={`${dest.country} — ${dest.highlight}`}
             >
