@@ -24,10 +24,10 @@ function DateField({ label }: { label: string }) {
       style={{ background: "rgba(255, 255, 255, 0.9)" }}
       onClick={() => inputRef.current?.showPicker()}
     >
-      <span className="text-[10px] font-semibold uppercase tracking-wider text-center" style={{ color: "var(--color-text-muted)" }}>
+      <span className="text-[10px] font-semibold uppercase tracking-wider text-left" style={{ color: "var(--color-text-muted)" }}>
         {label}
       </span>
-      <div className="flex items-center justify-center gap-2 relative">
+      <div className="flex items-center justify-start gap-2 relative">
         <TbCalendar className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
         <span className="text-sm" style={{ color: date ? "var(--color-text-primary)" : "var(--color-text-muted)" }}>
           {date ? formatDate(date) : "Select date"}
@@ -151,10 +151,10 @@ const Hero = () => {
                 className="flex flex-col gap-1 px-3 py-2 rounded-lg"
                 style={{ background: "rgba(255, 255, 255, 0.9)" }}
               >
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-center" style={{ color: "var(--color-text-muted)" }}>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-left" style={{ color: "var(--color-text-muted)" }}>
                   Destination
                 </span>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-start gap-2">
                   <TbMapPin className="w-4 h-4 flex-shrink-0" style={{ color: "var(--color-accent)" }} />
                   <input
                     type="text"
@@ -170,7 +170,7 @@ const Hero = () => {
               <DateField label="Check Out" />
 
               <button
-                className="flex items-center justify-center gap-2 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
                 style={{
                   background: "var(--color-accent)",
                   color: "white",
