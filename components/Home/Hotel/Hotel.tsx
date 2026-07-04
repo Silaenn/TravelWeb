@@ -76,7 +76,7 @@ const HotelSection = () => {
 
                 <button
                   onClick={() => toggleFavorite(hotel.id)}
-                  className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 rounded-md"
+                  className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-md active:scale-95 rounded-md"
                   style={{
                     background: "rgba(255, 255, 255, 0.9)",
                   }}

@@ -20,7 +20,7 @@ function DateField({ label }: { label: string }) {
 
   return (
     <div
-      className="flex flex-col gap-1 px-3 py-2 rounded-lg cursor-pointer"
+      className="flex flex-col gap-1 px-3 py-2 rounded-lg cursor-pointer transition-all duration-200 hover:brightness-95 hover:-translate-y-0.5 hover:shadow-md"
       style={{ background: "rgba(255, 255, 255, 0.9)" }}
       onClick={() => inputRef.current?.showPicker()}
     >
@@ -148,7 +148,7 @@ const Hero = () => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <div
-                className="flex flex-col gap-1 px-3 py-2 rounded-lg"
+                className="flex flex-col gap-1 px-3 py-2 rounded-lg transition-all duration-200 hover:brightness-95 hover:-translate-y-0.5 hover:shadow-md"
                 style={{ background: "rgba(255, 255, 255, 0.9)" }}
               >
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-left" style={{ color: "var(--color-text-muted)" }}>
@@ -170,7 +170,7 @@ const Hero = () => {
               <DateField label="Check Out" />
 
               <button
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 hover:shadow-lg active:scale-95"
                 style={{
                   background: "var(--color-accent)",
                   color: "white",

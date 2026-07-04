@@ -59,7 +59,7 @@ const Footer = () => {
             <div className="space-y-2.5">
               <a
                 href="tel:+0123456788"
-                className="flex items-center gap-2.5 text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
+                className="flex items-center gap-2.5 text-sm transition-all duration-200 hover:text-[var(--color-accent)] hover:translate-x-0.5"
                 style={{ color: "var(--color-text-secondary)" }}
                 aria-label="Call us: +012 345 6788"
               >
@@ -68,7 +68,7 @@ const Footer = () => {
               </a>
               <a
                 href="mailto:hello@voya.com"
-                className="flex items-center gap-2.5 text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
+                className="flex items-center gap-2.5 text-sm transition-all duration-200 hover:text-[var(--color-accent)] hover:translate-x-0.5"
                 style={{ color: "var(--color-text-secondary)" }}
                 aria-label="Email us"
               >
@@ -89,7 +89,7 @@ const Footer = () => {
                 <Link
                   key={label}
                   href={href}
-                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:text-[var(--color-accent)]"
+                  className="w-9 h-9 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:text-[var(--color-accent)] hover:scale-110"
                   style={{
                     background: "var(--color-bg-surface)",
                     border: "1px solid var(--color-border)",
@@ -117,7 +117,7 @@ const Footer = () => {
                   <li key={link}>
                     <Link
                       href="#"
-                      className="text-sm transition-colors duration-200 hover:text-[var(--color-accent)]"
+                      className="text-sm transition-all duration-200 hover:text-[var(--color-accent)] hover:translate-x-0.5"
                       style={{ color: "var(--color-text-secondary)" }}
                       aria-label={link}
                     >
@@ -146,15 +146,15 @@ const Footer = () => {
             className="flex items-center gap-4 text-xs"
             style={{ color: "var(--color-text-muted)" }}
           >
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+            <Link href="#" className="hover:text-[var(--color-accent)] hover:translate-x-0.5 transition-all duration-200">
               Privacy
             </Link>
             <span>&middot;</span>
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+            <Link href="#" className="hover:text-[var(--color-accent)] hover:translate-x-0.5 transition-all duration-200">
               Terms
             </Link>
             <span>&middot;</span>
-            <Link href="#" className="hover:text-[var(--color-accent)] transition-colors duration-200">
+            <Link href="#" className="hover:text-[var(--color-accent)] hover:translate-x-0.5 transition-all duration-200">
               Cookies
             </Link>
           </div>

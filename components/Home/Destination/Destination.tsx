@@ -49,7 +49,7 @@ const DestinationSection = () => {
               key={region}
               id={`destination-filter-${region.toLowerCase()}`}
               onClick={() => setActiveRegion(region)}
-              className="text-xs font-semibold uppercase tracking-wider px-4 py-1.5 rounded-full transition-all duration-200 cursor-pointer"
+              className="text-xs font-semibold uppercase tracking-wider px-4 py-1.5 rounded-full transition-all duration-200 cursor-pointer hover:opacity-80 hover:scale-105 hover:shadow-md"
               style={
                 activeRegion === region
                   ? {

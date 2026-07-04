@@ -131,7 +131,7 @@ const ReviewsSection = () => {
           <button
             onClick={prev}
             id="reviews-prev-btn"
-            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 active:scale-95 rounded-md"
+            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 hover:scale-110 hover:shadow-md active:scale-95 rounded-md"
             style={{
               background: "var(--color-bg-card)",
               border: "1.5px solid var(--color-border)",
@@ -153,7 +153,7 @@ const ReviewsSection = () => {
                 role="tab"
                 aria-selected={i === current}
                 aria-label={`Go to review ${i + 1}`}
-                className="rounded-full transition-all duration-300"
+                className="rounded-full transition-all duration-300 hover:opacity-80 hover:scale-125"
                 style={{
                   width: i === current ? "20px" : "6px",
                   height: "6px",
@@ -169,7 +169,7 @@ const ReviewsSection = () => {
           <button
             onClick={next}
             id="reviews-next-btn"
-            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 active:scale-95 rounded-md"
+            className="flex items-center justify-center w-9 h-9 transition-all duration-200 hover:opacity-70 hover:scale-110 hover:shadow-md active:scale-95 rounded-md"
             style={{
               background: "var(--color-bg-card)",
               border: "1.5px solid var(--color-border)",

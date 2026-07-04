@@ -43,7 +43,7 @@ const NewsSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <article
-            className="group relative overflow-hidden cursor-pointer card"
+            className="group relative overflow-hidden cursor-pointer card hover:-translate-y-1"
             style={{ height: "480px" }}
             data-aos="fade-right"
             aria-label={`Featured: ${featured.title}`}
@@ -91,7 +91,7 @@ const NewsSection = () => {
             {rest.map((article, i) => (
               <article
                 key={article.id}
-                className="group flex gap-4 p-4 card cursor-pointer transition-all duration-300"
+                className="group flex gap-4 p-4 card cursor-pointer transition-all duration-300 hover:-translate-y-1"
                 data-aos="fade-left"
                 data-aos-delay={`${i * 80}`}
                 aria-label={article.title}

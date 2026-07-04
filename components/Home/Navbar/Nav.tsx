@@ -63,7 +63,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
         <Link
           href="#hero"
           onClick={(e) => handleNavClick("#hero", e)}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 transition-all duration-200 hover:opacity-80 hover:scale-105"
           id="nav-logo"
           aria-label={`${BRAND_NAME} — Home`}
         >
@@ -98,7 +98,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
                 key={link.id}
                 href={link.url}
                 onClick={(e) => handleNavClick(link.url, e)}
-                className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200"
+                className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 hover:opacity-80 hover:scale-105"
                 style={{
                   color: isActive
                     ? scrolled
@@ -124,7 +124,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
         {/* Right: CTA + Mobile button */}
         <div className="flex items-center gap-3">
           <button
-            className="hidden lg:inline-flex text-xs font-semibold px-4 py-1.5 rounded-md transition-all duration-200"
+            className="hidden lg:inline-flex text-xs font-semibold px-4 py-1.5 rounded-md transition-all duration-200 hover:opacity-90 hover:scale-105 hover:shadow-lg"
             style={{
               background: scrolled ? "var(--color-primary)" : "rgba(255, 255, 255, 0.2)",
               color: "white",
@@ -138,7 +138,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
           </button>
           <button
             onClick={openNav}
-            className="lg:hidden p-2 rounded-md transition-colors duration-200"
+            className="lg:hidden p-2 rounded-md transition-all duration-200 hover:bg-white/20 hover:scale-105"
             style={{ color: scrolled ? "var(--color-text-primary)" : "white" }}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}

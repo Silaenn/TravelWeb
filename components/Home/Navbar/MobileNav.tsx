@@ -64,7 +64,7 @@ const MobileNav = ({ closeNav, isOpen }: Props) => {
           </div>
           <button
             onClick={closeNav}
-            className="p-2 rounded-md transition-colors duration-200"
+            className="p-2 rounded-md transition-all duration-200 hover:opacity-80 hover:rotate-90 hover:scale-110"
             style={{ color: "var(--color-text-secondary)", background: "var(--color-bg-surface)" }}
             aria-label="Close menu"
           >
@@ -78,7 +78,7 @@ const MobileNav = ({ closeNav, isOpen }: Props) => {
               key={link.id}
               href={link.url}
               onClick={(e) => handleNavClick(link.url, e)}
-              className="px-3 py-2.5 text-sm font-medium rounded-md transition-all duration-200"
+              className="px-3 py-2.5 text-sm font-medium rounded-md transition-all duration-200 hover:bg-black/10 hover:translate-x-1"
               style={{
                 color: "var(--color-text-secondary)",
               }}
