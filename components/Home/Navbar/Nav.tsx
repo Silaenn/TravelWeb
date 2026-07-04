@@ -126,7 +126,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
         {/* Right: CTA + Mobile button */}
         <div className="flex items-center gap-3">
           <button
-            className="text-xs font-semibold px-4 py-1.5 rounded-md transition-all duration-200"
+            className="hidden lg:inline-flex text-xs font-semibold px-4 py-1.5 rounded-md transition-all duration-200"
             style={{
               background: scrolled ? "var(--color-primary)" : "rgba(255, 255, 255, 0.2)",
               color: "white",

@@ -6,9 +6,10 @@ import { HiXMark } from "react-icons/hi2";
 
 type Props = {
   closeNav: () => void;
+  isOpen: boolean;
 };
 
-const MobileNav = ({ closeNav }: Props) => {
+const MobileNav = ({ closeNav, isOpen }: Props) => {
   const handleNavClick = (url: string, e: React.MouseEvent) => {
     e.preventDefault();
     const id = url.replace("#", "");
@@ -20,16 +21,25 @@ const MobileNav = ({ closeNav }: Props) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[999] flex overflow-x-hidden" aria-label="Mobile navigation">
+    <div
+      className={`fixed inset-0 z-[1001] flex transition-all duration-300 ${
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      }`}
+      aria-label="Mobile navigation"
+    >
       <div
-        className="absolute inset-0"
+        className={`absolute inset-0 transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0"
+        }`}
         style={{ background: "rgba(28, 24, 20, 0.5)" }}
         onClick={closeNav}
         aria-hidden="true"
       />
 
       <div
-        className="relative ml-auto w-[80%] max-w-[320px] h-full flex flex-col p-6"
+        className={`relative ml-auto w-[80%] max-w-[320px] h-full flex flex-col p-6 transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         style={{ background: "var(--color-bg)" }}
       >
         <div className="flex items-center justify-between mb-8">
