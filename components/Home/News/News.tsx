@@ -87,7 +87,7 @@ const NewsSection = () => {
             </div>
           </article>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 h-[480px] justify-between">
             {rest.map((article, i) => (
               <article
                 key={article.id}
