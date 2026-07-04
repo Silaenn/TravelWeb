@@ -88,20 +88,7 @@ The project serves as both a brand showcase and a functional booking entry point
 ---
 
 ## Screenshots
-
-> Screenshots to be added. Below are placeholder references for the key sections of the landing page.
-
-```
-Hero        — Full-screen video with search form, stats, and scroll prompt
-Why Choose  — Asymmetrical layout with trust badge and 2×2 benefit cards
-Destinations — Filterable 4-column card grid with overlay text
-Hotels      — 4-column card grid with image, rating, price, and wishlist
-Tours       — 2-column horizontal card grid with tag, rating, and booking
-Reviews     — 3-column card carousel with pagination and slide animation
-News        — 2-column split: featured hero + stacked article list
-Newsletter  — Centered CTA section with email form and success state
-Footer      — 5-column grid with brand info, link groups, social, and legal
-```
+<img width="1920" height="964" alt="Voya-Travel-—-Discover-the-World-Your-Way" src="https://github.com/user-attachments/assets/e9dbb8dd-d5a1-4a44-8077-bf82bf28e1d5" />
 
 ---
 
