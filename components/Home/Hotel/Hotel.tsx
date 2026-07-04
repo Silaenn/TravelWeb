@@ -105,7 +105,7 @@ const HotelSection = () => {
                   <span className="text-xs font-semibold" style={{ color: "var(--color-text-primary)" }}>
                     {hotel.rating}
                   </span>
-                  <span className="text-[10px]" style={{ color: "var(--color-text-muted)" }}>
+                  <span className="text-xs" style={{ color: "var(--color-text-muted)" }}>
                     ({hotel.reviews})
                   </span>
                 </div>
@@ -130,7 +130,7 @@ const HotelSection = () => {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--color-text-muted)" }}>
+                    <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--color-text-muted)" }}>
                       From
                     </p>
                     <p
