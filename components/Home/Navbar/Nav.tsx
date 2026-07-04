@@ -72,6 +72,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
             alt={BRAND_NAME}
             width={32}
             height={32}
+            priority
             className="w-8 h-8 object-contain"
           />
           <span

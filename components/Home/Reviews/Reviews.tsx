@@ -112,6 +112,7 @@ const ReviewsSection = () => {
                     alt={review.name}
                     fill
                     className="object-cover"
+                    sizes="40px"
                   />
                 </div>
                 <div>
