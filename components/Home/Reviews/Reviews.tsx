@@ -1,14 +1,24 @@
 "use client";
 import { reviewData } from "@/data/data";
 import Image from "next/image";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { TbChevronLeft, TbChevronRight, TbStarFilled } from "react-icons/tb";
 
 const ReviewsSection = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [visible, setVisible] = useState(3);
   const total = reviewData.length;
-  const visible = 3;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px) and (max-width: 1023px)");
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      setVisible(e.matches ? 4 : 3);
+    };
+    handler(mq);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const prev = useCallback(() => {
     setDirection("left");
