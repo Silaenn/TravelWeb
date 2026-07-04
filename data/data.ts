@@ -212,13 +212,6 @@ export const reviewData = [
   },
 ];
 
-export const statsData = [
-  { value: 500, suffix: "K+", label: "Happy Travelers" },
-  { value: 120, suffix: "+", label: "Destinations" },
-  { value: 2, suffix: "K+", label: "Luxury Hotels" },
-  { value: 98, suffix: "%", label: "Satisfaction Rate" },
-];
-
 export const newsData = [
   {
     id: 1,

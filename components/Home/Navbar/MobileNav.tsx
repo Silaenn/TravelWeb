@@ -1,5 +1,6 @@
 "use client";
 import { navLinks, BRAND_NAME } from "@/constant/constant";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiXMark } from "react-icons/hi2";
@@ -43,25 +44,26 @@ const MobileNav = ({ closeNav, isOpen }: Props) => {
         style={{ background: "var(--color-bg)" }}
       >
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-2">
-            <div
-              className="w-8 h-8 flex items-center justify-center rounded-md"
-              style={{ background: "var(--color-primary)" }}
-            >
-              <span
-                className="text-sm font-bold"
-                style={{ color: "var(--color-bg-card)", fontFamily: "var(--font-display)" }}
-              >
-                V
-              </span>
-            </div>
+          <Link
+            href="#hero"
+            onClick={(e) => { e.preventDefault(); closeNav(); }}
+            className="flex items-center gap-2"
+            aria-label={`${BRAND_NAME} — Home`}
+          >
+            <Image
+              src="/images/logo.png"
+              alt={BRAND_NAME}
+              width={32}
+              height={32}
+              className="w-8 h-8 object-contain"
+            />
             <span
               className="text-base font-bold"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-text-primary)" }}
             >
               {BRAND_NAME}
             </span>
-          </div>
+          </Link>
           <button
             onClick={closeNav}
             className="p-2 rounded-md transition-all duration-200 hover:opacity-80 hover:rotate-90 hover:scale-110"
