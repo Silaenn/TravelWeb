@@ -98,7 +98,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
                 key={link.id}
                 href={link.url}
                 onClick={(e) => handleNavClick(link.url, e)}
-                className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 hover:opacity-80 hover:scale-105"
+                className="px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 hover:opacity-80 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full after:bg-current"
                 style={{
                   color: isActive
                     ? scrolled

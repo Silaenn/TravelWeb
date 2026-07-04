@@ -117,7 +117,7 @@ const Footer = () => {
                   <li key={link}>
                     <Link
                       href="#"
-                      className="text-sm transition-all duration-200 hover:text-[var(--color-accent)] hover:translate-x-0.5"
+                      className="text-sm transition-all duration-200 hover:text-[var(--color-accent)] relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:rounded-full after:transition-all after:duration-300 hover:after:w-full after:bg-[var(--color-accent)]"
                       style={{ color: "var(--color-text-secondary)" }}
                       aria-label={link}
                     >
