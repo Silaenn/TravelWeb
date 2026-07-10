@@ -56,8 +56,7 @@ const Nav = ({ openNav, isOpen }: Props) => {
       }}
     >
       <div
-        className="container-voya flex items-center justify-between"
-        style={{ height: "64px" }}
+        className="container-voya flex items-center justify-between h-14 sm:h-16"
       >
         {/* Logo */}
         <Link
