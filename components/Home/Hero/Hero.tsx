@@ -62,7 +62,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-dvh overflow-x-hidden flex items-center justify-center pt-14 sm:pt-16 lg:pt-0"
+      className="relative w-full h-screen overflow-x-hidden flex items-center justify-center pt-14 sm:pt-16 lg:pt-0"
       aria-label="Voya Travel — Hero"
     >
       <video
